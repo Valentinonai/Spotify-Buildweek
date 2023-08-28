@@ -56,16 +56,16 @@
 
             <div class="row mt-3">
               <div class="col-3">
-                <div><img src="./assets/imgs/main/image-18.jpg" alt="img" width="100%" /></div>
+                <div><img src="" alt="img" width="100%" id="imgAlbum" /></div>
               </div>
               <div class="col-9">
                 <div>
-                  <h5>Album</h5>
-                  <h1>Titolo</h1>
+                  <h5 id="nomeAlbum">Album</h5>
+                  <h1 id="titoloAlbum">Titolo</h1>
                   <div id="autore" class="row align-items-center">
                     <div class="col-1 pe-0">
                       <div class="rounded-circle overflow-hidden">
-                        <img src="./assets/imgs/main/image-9.jpg" alt="autore" width="100%" />
+                        <img src="./assets/imgs/main/image-9.jpg" alt="autore" width="100%" id="imgArtista" />
                       </div>
                     </div>
                     <div class="col-11">
@@ -102,11 +102,11 @@
               </div>
             </div>
             <hr />
-            <div class="row">
-              <div class="col-1"></div>
-              <div class="col-7"></div>
-              <div class="col-2"></div>
-              <div class="col-2"></div>
+            <div class="row" id="tabella">
+              <div class="col-1" id="numeroCanzone"></div>
+              <div class="col-7" id="titoloCanzone"></div>
+              <div class="col-2" id="numeroRiproduzioni"></div>
+              <div class="col-2" id="durata"></div>
             </div>
           </div>
         </div>
@@ -119,5 +119,6 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+    <script src="AlbumPage.js"></script>
   </body>
 </html>

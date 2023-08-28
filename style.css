@@ -133,7 +133,6 @@
   position: absolute;
   top: 40vh;
   background-image: linear-gradient(0deg, #121212 70%, #1212125c);
-  height: 70vh;
   width: 100%;
   padding-inline: 16px;
 }
@@ -153,4 +152,8 @@ hr {
 
 #albumDettaglio span {
   color: rgb(132, 131, 131);
+}
+
+#tabella {
+  color: rgb(193, 190, 190);
 }
