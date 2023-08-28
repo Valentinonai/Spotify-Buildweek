@@ -82,11 +82,12 @@
 
 .playlist {
   background-color: #2c2c2c;
+  min-height: 50px;
 }
 .playlist p {
   margin: 0;
 }
-.playListImg {
+.playListImg1 {
   width: 30%;
 }
 .favoriti {
