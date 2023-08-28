@@ -18,8 +18,8 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-2 bg-danger"></div>
-        <div class="col-9 pt-1 px-5 pb-5" id="main">
+        <div class="d-none d-md-block col-md-2 bg-danger"></div>
+        <div class="col-12 col-md-9 pt-1 px-0 px-sm-5 pb-5" id="main">
           <div id="nav" class="d-flex justify-content-between align-items-center mb-3">
             <div id="navBtn" class="d-flex">
               <div class="me-2 navBtnCustom"><i class="bi bi-arrow-left-circle"></i></div>
@@ -53,12 +53,12 @@
             </div>
           </div>
           <div class="row py-3 mx-0" id="mainAlbum">
-            <div class="col-3">
+            <div class="d-none d-sm-block col-3">
               <div class="d-flex align-items-center pt-2">
                 <img src="" alt="" width="100%" height="100%" id="mainImg" />
               </div>
             </div>
-            <div class="col-9">
+            <div class="col-12 col-sm-9">
               <div id="mainDetails">
                 <h5>Album</h5>
                 <h1>Titolo</h1>
@@ -67,14 +67,14 @@
                 <div id="mainAlbumBtn">
                   <button>Play</button>
                   <button>Salva</button>
-                  <button><i class="bi bi-three-dots"></i></button>
+                  <button id="mainAlbumBtnMenu"><i class="bi bi-three-dots"></i></button>
                 </div>
               </div>
             </div>
           </div>
-          <h2 class="my-3">Buonasera</h2>
+          <h2 class="my-3">Suggeriti</h2>
           <div class="row g-3">
-            <div class="col-4">
+            <div class="col-12 col-sm-6 col-md-4">
               <div class="d-flex align-items-center rounded-2 overflow-hidden playlist">
                 <div class="playListImg1">
                   <img src="./assets/imgs/main/image-13.jpg" alt="" width="100%" class="playListImg" />
@@ -82,7 +82,7 @@
                 <div class="ps-3"><p class="playListTitle">Titolo Playllist</p></div>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-sm-6 col-md-4">
               <div class="d-flex align-items-center rounded-2 overflow-hidden playlist">
                 <div class="playListImg1">
                   <img src="./assets/imgs/main/image-13.jpg" alt="" width="100%" class="playListImg" />
@@ -90,7 +90,7 @@
                 <div class="ps-3"><p class="playListTitle">Titolo Playllist</p></div>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-sm-6 col-md-4">
               <div class="d-flex align-items-center rounded-2 overflow-hidden playlist">
                 <div class="playListImg1">
                   <img src="./assets/imgs/main/image-13.jpg" alt="" width="100%" class="playListImg" />
@@ -98,7 +98,7 @@
                 <div class="ps-3"><p class="playListTitle">Titolo Playllist</p></div>
               </div>
             </div>
-            <div class="col-4">
+            <div class="d-none d-sm-block col-sm-6 col-md-4">
               <div class="d-flex align-items-center rounded-2 overflow-hidden playlist">
                 <div class="playListImg1">
                   <img src="./assets/imgs/main/image-13.jpg" alt="" width="100%" class="playListImg" />
@@ -106,7 +106,7 @@
                 <div class="ps-3"><p class="playListTitle">Titolo Playllist</p></div>
               </div>
             </div>
-            <div class="col-4">
+            <div class="d-none d-sm-block col-sm-6 col-md-4">
               <div class="d-flex align-items-center rounded-2 overflow-hidden playlist">
                 <div class="playListImg1">
                   <img src="./assets/imgs/main/image-13.jpg" alt="" width="100%" class="playListImg" />
@@ -114,7 +114,7 @@
                 <div class="ps-3"><p class="playListTitle">Titolo Playllist</p></div>
               </div>
             </div>
-            <div class="col-4">
+            <div class="d-none d-sm-block col-sm-6 col-md-4">
               <div class="d-flex align-items-center rounded-2 overflow-hidden playlist">
                 <div class="playListImg1">
                   <img src="./assets/imgs/main/image-13.jpg" alt="" width="100%" class="playListImg" />
@@ -123,9 +123,9 @@
               </div>
             </div>
           </div>
-          <h5 class="my-3">Altro di ciò che ti piace</h5>
-          <div class="row row-cols-5 gx-2">
-            <div class="col">
+          <h5 class="my-3">I tuoi favoriti</h5>
+          <div class="row row-cols-5 gx-2" id="suggerimenti">
+            <!-- <div class="col">
               <div class="p-2 favoriti rounded">
                 <div class="rounded overflow-hidden">
                   <img src="" alt="img" width="100%" class="suggImg" />
@@ -169,10 +169,11 @@
                 <h6 class="mt-2 suggTitle">Titolo</h6>
                 <p class="suggDescription">Descrizione</p>
               </div>
-            </div>
+            </div> -->
           </div>
+          <div id="tuoiFavoriti"></div>
         </div>
-        <div class="col-1 bg-primary"></div>
+        <div class="d-none d-md-block col-md-1 bg-primary"></div>
       </div>
     </div>
     <script

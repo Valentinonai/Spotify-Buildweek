@@ -7,6 +7,53 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(album);
       console.log(album.cover);
       document.getElementById("imgAlbum").setAttribute("src", album.cover);
+      document.getElementById("nomeAlbum").innerText = album.label;
+      document.getElementById("titoloAlbum").innerText = album.title;
+      document.getElementById("albumDetail").innerText =
+        album.artist.name + " " + album.release_date + " n°" + album.nb_tracks + " brani, " + showTime(album.duration);
+      document.getElementById("imgArtista").setAttribute("src", album.artist.picture);
+      const like = document.getElementById("like");
+      if (localStorage.getItem("idAlbum")) {
+        const arrayFavoriti = JSON.parse(localStorage.getItem("idAlbum"));
+        arrayFavoriti.forEach((elem) => {
+          if (elem === album.id) {
+            document.querySelector("#like i:first-of-type").style = "display:none";
+            document.querySelector("#like i:last-of-type").style = "display:block";
+            like.classList.add("like");
+          }
+        });
+      }
+      //!SALVATAGGIO PREFERITI
+      like.addEventListener("click", () => {
+        const arrayFavoriti = JSON.parse(localStorage.getItem("idAlbum"));
+        if (like.classList.contains("like")) {
+          like.classList.remove("like");
+          document.querySelector("#like i:first-of-type").style = "display:block";
+          document.querySelector("#like i:last-of-type").style = "display:none";
+          console.log(album.id);
+          if (arrayFavoriti) {
+            for (let i = 0; i < arrayFavoriti.length; i++) {
+              if (arrayFavoriti[i] === album.id) {
+                arrayFavoriti.splice(i, 1);
+                localStorage.setItem("idAlbum", JSON.stringify(arrayFavoriti));
+              }
+            }
+          }
+        } else {
+          like.classList.add("like");
+          document.querySelector("#like i:first-of-type").style = "display:none";
+          document.querySelector("#like i:last-of-type").style = "display:block";
+          if (localStorage.getItem("idAlbum")) {
+            arrayFavoriti.push(album.id);
+            localStorage.setItem("idAlbum", JSON.stringify(arrayFavoriti));
+          } else {
+            const arrayFavoriti = [];
+            arrayFavoriti.push(album.id);
+            localStorage.setItem("idAlbum", JSON.stringify(arrayFavoriti));
+          }
+        }
+      });
+      //!--------------------------
       album.tracks.data.forEach((element) => {
         const numeroCanzone = document.createElement("div");
         const titoloCanzone = document.createElement("div");
@@ -28,17 +75,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
 const showTime = (time) => {
   let minuti = parseInt(time / 60);
-  const ore = parseInt(minuti / 60);
-  const secondi = time % 60;
+  let ore = parseInt(minuti / 60);
+  let secondi = time % 60;
   minuti = minuti - ore * 60;
-  console.log(ore, minuti, secondi);
   let tempo = 0;
+  if (minuti < 10) minuti = "0" + minuti.toString();
+  if (secondi < 10) secondi = "0" + secondi.toString();
+  if (ore < 10) ore = "0" + ore.toString();
+  console.log(minuti, secondi);
   if (ore > 0) {
-    tempo = `${ore} h  ${minuti} m  ${secondi} s`;
+    tempo = `${ore}:${minuti}:${secondi}`;
   } else if (minuti > 0) {
-    tempo = `${minuti} m  ${secondi} s`;
+    tempo = `${minuti}:${secondi}`;
   } else {
-    tempo = `${secondi} s`;
+    tempo = `0:${secondi}`;
   }
   return tempo;
 };

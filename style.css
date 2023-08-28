@@ -89,6 +89,7 @@
 }
 .playListImg1 {
   width: 30%;
+  cursor: pointer;
 }
 .favoriti {
   background-color: #171717;
@@ -156,4 +157,56 @@ hr {
 
 #tabella {
   color: rgb(193, 190, 190);
+}
+#like i:last-of-type {
+  display: none;
+}
+.like {
+  color: #65d46e !important;
+}
+
+.suggImg {
+  cursor: pointer;
+}
+
+#albumDetail {
+  font-size: 12px;
+}
+#tuoiFavoriti {
+  display: none;
+}
+.listHeart {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #65d46e;
+}
+
+@media screen and (max-width: 800px) {
+  #suggerimenti {
+    display: none;
+  }
+  #tuoiFavoriti {
+    display: block;
+  }
+  .listHeart {
+    bottom: 10px;
+    right: 10px;
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 400px) {
+  #mainAlbumBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #mainAlbumBtn button {
+    margin-block: 5px;
+    order: 2;
+  }
+  #mainAlbumBtnMenu {
+    display: flex;
+    order: 1 !important;
+  }
 }
