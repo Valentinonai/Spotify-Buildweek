@@ -16,10 +16,10 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container-xl">
       <div class="row">
-        <div class="col-2"></div>
-        <div class="col-9 pt-1 px-4 pb-5" id="main">
+        <div class="col-2 bg-danger"></div>
+        <div class="col-9 pt-1 px-5 pb-5" id="main">
           <div id="nav" class="d-flex justify-content-between align-items-center mb-3">
             <div id="navBtn" class="d-flex">
               <div class="me-2 navBtnCustom"><i class="bi bi-arrow-left-circle"></i></div>
@@ -50,17 +50,23 @@
               </div>
             </div>
           </div>
-          <div id="mainAlbum" class="row py-3">
-            <div class="col-3"><img src="./assets/imgs/search/image-11.jpg" alt="" width="100%" height="100%" /></div>
+          <div class="row py-3 mx-0" id="mainAlbum">
+            <div class="col-3">
+              <div class="d-flex align-items-center pt-2">
+                <img src="./assets/imgs/search/image-11.jpg" alt="" width="100%" height="100%" />
+              </div>
+            </div>
             <div class="col-9">
-              <h5>Album</h5>
-              <h1>Titolo</h1>
-              <h6>Artista</h6>
-              <p>Descrizione</p>
-              <div id="mainAlbumBtn">
-                <button>Play</button>
-                <button>Salva</button>
-                <button><i class="bi bi-three-dots"></i></button>
+              <div>
+                <h5>Album</h5>
+                <h1>Titolo</h1>
+                <h6>Artista</h6>
+                <p>Descrizione</p>
+                <div id="mainAlbumBtn">
+                  <button>Play</button>
+                  <button>Salva</button>
+                  <button><i class="bi bi-three-dots"></i></button>
+                </div>
               </div>
             </div>
           </div>
@@ -104,35 +110,55 @@
             </div>
           </div>
           <h5 class="my-3">Altro di ciò che ti piace</h5>
-          <div class="row row-cols-5 gx-5">
-            <div class="col p-2 favoriti">
-              <div><img src="./assets/imgs/main/image-4.jpg" alt="img" width="100%" /></div>
-              <h6 class="mt-2">Titolo</h6>
-              <p>Descrizione</p>
+          <div class="row row-cols-5 gx-2">
+            <div class="col">
+              <div class="p-2 favoriti rounded">
+                <div class="rounded overflow-hidden">
+                  <img src="./assets/imgs/main/image-4.jpg" alt="img" width="100%" />
+                </div>
+                <h6 class="mt-2">Titolo</h6>
+                <p>Descrizione</p>
+              </div>
             </div>
-            <div class="col p-2 favoriti">
-              <div><img src="./assets/imgs/main/image-4.jpg" alt="img" width="100%" /></div>
-              <h6 class="mt-2">Titolo</h6>
-              <p>Descrizione</p>
+            <div class="col">
+              <div class="p-2 favoriti rounded">
+                <div class="rounded overflow-hidden">
+                  <img src="./assets/imgs/main/image-4.jpg" alt="img" width="100%" />
+                </div>
+                <h6 class="mt-2">Titolo</h6>
+                <p>Descrizione</p>
+              </div>
             </div>
-            <div class="col p-2 favoriti">
-              <div><img src="./assets/imgs/main/image-4.jpg" alt="img" width="100%" /></div>
-              <h6 class="mt-2">Titolo</h6>
-              <p>Descrizione</p>
+            <div class="col">
+              <div class="p-2 favoriti rounded">
+                <div class="rounded overflow-hidden">
+                  <img src="./assets/imgs/main/image-4.jpg" alt="img" width="100%" />
+                </div>
+                <h6 class="mt-2">Titolo</h6>
+                <p>Descrizione</p>
+              </div>
             </div>
-            <div class="col p-2 favoriti">
-              <div><img src="./assets/imgs/main/image-4.jpg" alt="img" width="100%" /></div>
-              <h6 class="mt-2">Titolo</h6>
-              <p>Descrizione</p>
+            <div class="col">
+              <div class="p-2 favoriti rounded">
+                <div class="rounded overflow-hidden">
+                  <img src="./assets/imgs/main/image-4.jpg" alt="img" width="100%" />
+                </div>
+                <h6 class="mt-2">Titolo</h6>
+                <p>Descrizione</p>
+              </div>
             </div>
-            <div class="col p-2 favoriti">
-              <div><img src="./assets/imgs/main/image-4.jpg" alt="img" width="100%" /></div>
-              <h6 class="mt-2">Titolo</h6>
-              <p>Descrizione</p>
+            <div class="col">
+              <div class="p-2 favoriti rounded">
+                <div class="rounded overflow-hidden">
+                  <img src="./assets/imgs/main/image-4.jpg" alt="img" width="100%" />
+                </div>
+                <h6 class="mt-2">Titolo</h6>
+                <p>Descrizione</p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-1"></div>
+        <div class="col-1 bg-primary"></div>
       </div>
     </div>
     <script

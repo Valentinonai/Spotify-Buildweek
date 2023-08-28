@@ -34,7 +34,7 @@
   font-size: 14px;
 }
 
-#mainAlbum div:first-child img {
+#mainAlbum img {
   object-fit: contain;
   object-position: center;
 }
