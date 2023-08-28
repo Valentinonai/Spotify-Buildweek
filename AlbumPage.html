@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AlbumPage</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="./assets/css/circular-font.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2 bg-danger"></div>
+        <div class="col-9 p-0" style="position: relative">
+          <div id="header" class="px-3">
+            <div id="nav" class="d-flex justify-content-between align-items-center mb-3">
+              <div id="navBtn" class="d-flex">
+                <div class="me-2 navBtnCustom"><i class="bi bi-arrow-left-circle"></i></div>
+                <div class="navBtnCustom"><i class="bi bi-arrow-right-circle"></i></div>
+              </div>
+              <div id="navUser" class="d-flex align-items-center">
+                <div class="btn-group" id="navDropDown">
+                  <button
+                    class="btn btn-sm dropdown-toggle text-white d-flex align-items-center pe-3"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    id="dropDownButton"
+                  >
+                    <img
+                      src="./assets/imgs/main/image-15.jpg"
+                      alt="User"
+                      width="20px"
+                      height="20px"
+                      class="rounded-circle me-1"
+                    />
+
+                    User.........
+                  </button>
+                  <ul class="dropdown-menu bg-secondary dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-3">
+                <div><img src="./assets/imgs/main/image-18.jpg" alt="img" width="100%" /></div>
+              </div>
+              <div class="col-9">
+                <div>
+                  <h5>Album</h5>
+                  <h1>Titolo</h1>
+                  <div id="autore" class="row align-items-center">
+                    <div class="col-1 pe-0">
+                      <div class="rounded-circle overflow-hidden">
+                        <img src="./assets/imgs/main/image-9.jpg" alt="autore" width="100%" />
+                      </div>
+                    </div>
+                    <div class="col-11">
+                      <p id="albumDetail" class="font-monospace m-0">Autore-Anno-n brani, <span>Tempo</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="albumDettaglio">
+            <div id="albumBtn" class="d-flex">
+              <button class="d-flex align-items-center justify-content-center">
+                <i class="bi bi-play-fill"></i>
+              </button>
+              <button><i class="bi bi-heart"></i></button>
+              <button><i class="bi bi-download"></i></button>
+              <button><i class="bi bi-three-dots"></i></button>
+            </div>
+            <div class="row">
+              <div class="col-1">
+                <div><span>#</span></div>
+              </div>
+              <div class="col-7">
+                <div><span>Titolo</span></div>
+              </div>
+              <div class="col-2">
+                <div><span>Riproduzioni</span></div>
+              </div>
+              <div class="col-2">
+                <div>
+                  <span><i class="bi bi-clock"></i></span>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-1"></div>
+              <div class="col-7"></div>
+              <div class="col-2"></div>
+              <div class="col-2"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-1 bg-primary"></div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

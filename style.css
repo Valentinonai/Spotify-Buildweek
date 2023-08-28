@@ -6,8 +6,11 @@
 .navBtnCustom {
   font-size: 20px;
   color: gray;
+  cursor: pointer;
 }
-
+.navBtnCustom :active {
+  opacity: 0.5;
+}
 #user {
   font-size: 20px;
   color: gray;
@@ -20,8 +23,8 @@
 
 #dropDownButton {
   padding: 0;
-  width: 100px;
-  border-radius: 0 10px 10px 0;
+  width: 110px;
+  border-radius: 10px;
   vertical-align: middle;
   background-color: black;
 }
@@ -93,4 +96,60 @@
 .favoriti p {
   margin: 0;
   font-size: 10px;
+}
+
+#albumBtn {
+  margin-block: 20px;
+}
+#albumBtn button {
+  width: 50px;
+  height: 50px;
+  outline: none;
+  color: white;
+  font-size: 25px;
+  border: none;
+  align-items: center;
+  vertical-align: middle;
+  border-radius: 25px;
+  background-color: transparent;
+  margin-inline: 10px;
+}
+#albumBtn button:first-child {
+  background-color: #65d46e;
+  color: black;
+  font-size: 30px;
+  margin-inline-start: 0;
+  padding-inline-start: 10px;
+}
+
+#header {
+  background-color: palegoldenrod;
+  height: 50vh;
+  position: relative;
+}
+
+#albumDettaglio {
+  position: absolute;
+  top: 40vh;
+  background-image: linear-gradient(0deg, #121212 70%, #1212125c);
+  height: 70vh;
+  width: 100%;
+  padding-inline: 16px;
+}
+
+#albumBtn button :active {
+  opacity: 0.5;
+}
+
+.tabella {
+  border-bottom: 1px solid gray;
+}
+
+hr {
+  margin-block: 5px;
+  color: rgb(152, 151, 151);
+}
+
+#albumDettaglio span {
+  color: rgb(132, 131, 131);
 }
