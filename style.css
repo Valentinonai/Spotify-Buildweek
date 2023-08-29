@@ -214,3 +214,153 @@ hr {
     order: 1 !important;
   }
 }
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  height: 100%;
+  background-color: #000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  color: white;
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+.icon-wrapper {
+  margin-bottom: 10px;
+  margin-left: 13px;
+}
+
+/*dropdown*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+  height: 100px;
+  width: 100px;
+}
+
+.dropdown-icon {
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  color: black;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.neon-button {
+  display: block;
+  font-size: 15px;
+  padding: 5px;
+  text-align: center;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.neon-button:nth-child(5) {
+  margin-bottom: 30px;
+}
+.plus {
+  background-color: #dacfcd;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.heart {
+  background-color: #375894;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.favorite {
+  background-color: #017410;
+  color: rgb(9, 199, 34);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#lista {
+  color: white;
+}
+
+#rightSidebar {
+  width: 170px;
+  height: 100%;
+  background-color: #000000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  font-size: 10px;
+  color: white;
+
+  margin-left: 10px;
+}
+
+#rightSidebar h4 {
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+}
+
+#rightSidebar ion-icon {
+  font-size: 16px;
+  margin-left: 2px;
+}
+
+.rightIcon {
+  margin-left: 41px;
+}
+
+h5 {
+  font-size: 9px !important;
+}
+
+h5 img {
+  border-radius: 30px;
+  margin-left: 10px;
+}
+
+p {
+  margin-left: 11px;
+}
+
+.pippo1 {
+  margin-left: 15px;
+}
+
+span {
+  margin-left: 8px;
+}
+.zio {
+  margin-top: -29px;
+}
