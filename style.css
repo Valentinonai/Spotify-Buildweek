@@ -140,7 +140,7 @@ body {
   width: 100%;
   padding-inline: 16px;
   height: 60vh;
-  overflow-y: auto;
+  overflow-y: initial;
 }
 
 #albumBtn button :active {
@@ -162,7 +162,7 @@ hr {
 
 #tabella {
   color: rgb(193, 190, 190);
-  height: 40vh;
+  height: 35vh;
   overflow-y: auto;
 }
 #like i:last-of-type {
