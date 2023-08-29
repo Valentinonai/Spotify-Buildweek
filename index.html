@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sb</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="icon-wrapper">
+            <ion-icon class="dropdown-icon" name="ellipsis-horizontal"></ion-icon>
+            <div class="dropdown-content">
+                <a href="#">Opzione 1</a>
+                <a href="#">Opzione 2</a>
+                <a href="#">Opzione 3</a>
+            </div>
+        </div>
+        <button class="neon-button m-2"><ion-icon name="home-outline"></ion-icon> Home</button>
+        <button class="neon-button m-2"><ion-icon name="library-outline"></ion-icon> Libreria</button>
+        <button class="neon-button m-2"><ion-icon name="search-outline"></ion-icon> Cerca</button>
+        <div class="wrap">
+
+            <span class="d-flex"><ion-icon class="plus mt-2 p-2 " name="add"></ion-icon><button
+                    class="neon-button mt-2">
+                    Crea playlist</button></span>
+            <span class=" d-flex"><ion-icon class="heart  mt-2 p-2 " name="heart-outline"></ion-icon><button
+                    class="neon-button mt-2 ">Brani che ti piacciono</button></span>
+            <span class="d-flex"><ion-icon class="favorite  mt-2 p-2 " name="bookmark"></ion-icon> <button
+                    class="neon-button mt-2"> I tuoi
+                    episodi</button></span>
+        </div>
+    </div>
+
+    <div id="lista">
+        <ul>
+            <li class="m-2">Be the young</li>
+            <li class="m-2">2021 lol</li>
+            <li class="m-2">saggio vibes</li>
+        </ul>
+    </div>
+
+    <div id="rightSidebar">
+        <div class="d-flex">
+            <h4>Attività amici
+                <div class="rightIcon">
+                    <ion-icon class="addF" name="person-add-outline"></ion-icon>
+                    <ion-icon name="close-sharp"></ion-icon>
+                </div>
+            </h4>
+        </div>
+        <h5> <img src="image-9.jpg" width="20px" height="20px" alt="error"> <span> Charlie Hookman </span> <span>4
+                ore</span></h5>
+        <p class="pippo1"> In Camera Yumi Zouma</p>
+
+        <div class="d-flex">
+            <span class="d-flex col-md-4"> <ion-icon name="disc-outline"></ion-icon>
+                <p> EPIII</p>
+            </span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
