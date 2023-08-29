@@ -90,6 +90,7 @@ window.addEventListener("DOMContentLoaded", () => {
               if (audioPlaying !== null) {
                 console.dir(audioPlaying);
                 audioPlaying.pause();
+                audioPlaying.bottone_di_riferimento.audio_di_riferimento.currentTime = 0;
               }
               document.querySelector("#btnPlay").classList.add("pause");
               document.querySelector("#btnPlay i:first-of-type").style = "display:none";
