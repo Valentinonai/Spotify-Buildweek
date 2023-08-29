@@ -10,8 +10,6 @@ window.addEventListener("DOMContentLoaded", () => {
     .then((risp) => risp.json())
     .then((album) => {
       let cont = 0;
-      console.log(album);
-      console.log(album.cover);
       document.getElementById("imgAlbum").setAttribute("src", album.cover);
       document.getElementById("nomeAlbum").innerText = album.label;
       document.getElementById("titoloAlbum").innerText = album.title;
@@ -45,7 +43,6 @@ window.addEventListener("DOMContentLoaded", () => {
           document.querySelector("#like i:last-of-type").style = "display:none";
           document.querySelector("#playerLike i:first-of-type").style = "display:block";
           document.querySelector("#playerLike i:last-of-type").style = "display:none";
-          console.log(album.id);
           if (arrayFavoriti) {
             for (let i = 0; i < arrayFavoriti.length; i++) {
               if (arrayFavoriti[i] === album.id) {
@@ -73,7 +70,6 @@ window.addEventListener("DOMContentLoaded", () => {
       });
       //!--------------------------
       album.tracks.data.forEach((element) => {
-        console.log(element);
         const numeroCanzone = document.createElement("div");
         const titoloCanzone = document.createElement("div");
         const numeroRiproduzioni = document.createElement("div");
@@ -82,9 +78,10 @@ window.addEventListener("DOMContentLoaded", () => {
         titoloCanzone.innerText = element.title_short;
         titoloCanzone.style = "cursor:pointer";
         titoloCanzone.addEventListener("click", () => {
-          document.body.innerHTML += `<audio controls autoplay style="display:none">
-          <source src="${element.preview}" type="audio/ogg">
+          document.body.innerHTML += `<audio>
+          <source src="${element.preview}" type="audio/mp3">
         </audio>`;
+          console.log(document.querySelector("audio"));
         });
         numeroRiproduzioni.innerText = element.rank;
         durata.innerText = showTime(element.duration);
@@ -107,7 +104,6 @@ const showTime = (time) => {
   if (minuti < 10) minuti = "0" + minuti.toString();
   if (secondi < 10) secondi = "0" + secondi.toString();
   if (ore < 10) ore = "0" + ore.toString();
-  console.log(minuti, secondi);
   if (ore > 0) {
     tempo = `${ore}:${minuti}:${secondi}`;
   } else if (minuti > 0) {
