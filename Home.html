@@ -18,7 +18,43 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="d-none d-md-block col-md-2 bg-danger"></div>
+        <div class="d-none d-md-block col-md-2 bg-danger">
+          <div class="sidebar">
+            <div class="icon-wrapper">
+              <ion-icon class="dropdown-icon" name="ellipsis-horizontal"></ion-icon>
+              <div class="dropdown-content">
+                <a href="#">Opzione 1</a>
+                <a href="#">Opzione 2</a>
+                <a href="#">Opzione 3</a>
+              </div>
+            </div>
+            <button class="neon-button m-2"><ion-icon name="home-outline"></ion-icon> Home</button>
+            <button class="neon-button m-2"><ion-icon name="library-outline"></ion-icon> Libreria</button>
+            <button class="neon-button m-2"><ion-icon name="search-outline"></ion-icon> Cerca</button>
+            <div class="wrap">
+              <span class="d-flex"
+                ><ion-icon class="plus mt-2 p-2" name="add"></ion-icon
+                ><button class="neon-button mt-2">Crea playlist</button></span
+              >
+              <span class="d-flex"
+                ><ion-icon class="heart mt-2 p-2" name="heart-outline"></ion-icon
+                ><button class="neon-button mt-2">Brani che ti piacciono</button></span
+              >
+              <span class="d-flex"
+                ><ion-icon class="favorite mt-2 p-2" name="bookmark"></ion-icon>
+                <button class="neon-button mt-2">I tuoi episodi</button></span
+              >
+            </div>
+          </div>
+
+          <div id="lista">
+            <ul>
+              <li class="m-2">Be the young</li>
+              <li class="m-2">2021 lol</li>
+              <li class="m-2">saggio vibes</li>
+            </ul>
+          </div>
+        </div>
         <div class="col-12 col-md-9 pt-1 px-0 px-sm-5 pb-5" id="main">
           <div id="nav" class="d-flex justify-content-between align-items-center mb-3">
             <div id="navBtn" class="d-flex">
