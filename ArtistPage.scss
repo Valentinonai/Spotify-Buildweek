@@ -1,0 +1,116 @@
+div.container-fluid {
+  margin: 0;
+  div.row {
+    div.col-9 {
+      div#header {
+        background-image: url(https://ips.plug.it/cips/supereva/cms/2019/02/freddie-mercury.jpg);
+        background-size: cover;
+        height: 250px;
+        margin: 0;
+        padding: 0;
+
+        div {
+          p {
+            font-size: 14px;
+            color: white;
+            font-weight: 600;
+            padding-left: 20px;
+            margin-bottom: 0;
+          }
+          h1 {
+            font-size: 50px;
+            color: white;
+            padding-left: 14px;
+          }
+        }
+      }
+      div.backgroundBlack {
+        background-color: rgb(80, 80, 80);
+        padding-left: 10px;
+        color: white;
+        div#playArtist {
+          padding-top: 15px;
+          height: 70px;
+          font-size: 30px;
+
+          //   i {
+          //   }
+          button {
+            margin-inline: 10px;
+            button :active {
+              opacity: 0.5;
+            }
+          }
+        }
+        div.row {
+          div.col-7 {
+            h5 {
+              font-size: 20px;
+              font-weight: 700;
+              margin-bottom: 20px;
+            }
+          }
+          div#braniPopolari {
+            font-size: 14px;
+            p#numeroBrano {
+              font-size: 20px;
+            }
+          }
+          div.col-5 {
+            h5 {
+              font-size: 20px;
+              margin-bottom: 20px;
+            }
+            div.d-flex {
+              h6 {
+                font-size: 16px;
+                margin-left: 3px;
+              }
+              p {
+                font-size: 12px;
+                margin-left: 3px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.navBtnCustom {
+  font-size: 20px;
+  color: gray;
+  cursor: pointer;
+}
+.navBtnCustom :active {
+  opacity: 0.5;
+}
+#user {
+  font-size: 20px;
+  color: gray;
+}
+#dropDownButton {
+  padding: 0;
+  width: 110px;
+  border-radius: 10px;
+  vertical-align: middle;
+  background-color: black;
+}
+#durataBranoPopolare {
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
+}
+.infoBrano {
+  margin-left: 5px;
+}
+
+@media (max-width: 600px) {
+  #playArtist {
+    justify-content: space-between;
+    padding-inline: 10px;
+    #followingBtn {
+      order: 1;
+    }
+  }
+}
