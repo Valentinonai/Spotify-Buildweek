@@ -1,3 +1,4 @@
+let audioPlaying = null;
 window.addEventListener("DOMContentLoaded", () => {
   const id = new URLSearchParams(window.location.search).get("albumId");
   fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${id}`, {
@@ -52,6 +53,7 @@ window.addEventListener("DOMContentLoaded", () => {
             }
           }
         } else {
+          console.log(album);
           like.classList.add("like");
           document.querySelector("#like i:first-of-type").style = "display:none";
           document.querySelector("#like i:last-of-type").style = "display:block";
@@ -59,11 +61,11 @@ window.addEventListener("DOMContentLoaded", () => {
           document.querySelector("#playerLike i:last-of-type").style = "display:block";
           document.querySelector("#playerLike i:last-of-type").classList.add("like");
           if (localStorage.getItem("idAlbum")) {
-            arrayFavoriti.push(id);
+            arrayFavoriti.push(album.id);
             localStorage.setItem("idAlbum", JSON.stringify(arrayFavoriti));
           } else {
             const arrayFavoriti = [];
-            arrayFavoriti.push(id);
+            arrayFavoriti.push(album.id);
             localStorage.setItem("idAlbum", JSON.stringify(arrayFavoriti));
           }
         }
@@ -77,12 +79,23 @@ window.addEventListener("DOMContentLoaded", () => {
         numeroCanzone.innerText = cont + 1;
         titoloCanzone.innerText = element.title_short;
         titoloCanzone.style = "cursor:pointer";
-        titoloCanzone.addEventListener("click", () => {
-          document.body.innerHTML += `<audio>
-          <source src="${element.preview}" type="audio/mp3">
-        </audio>`;
-          console.log(document.querySelector("audio"));
-        });
+        if (element.preview) {
+          const audio = new Audio(element.preview);
+          audio.bottone_di_riferimento = titoloCanzone;
+          audio.addEventListener("canplaythrough", (evento_load) => {
+            const bottone = evento_load.target.bottone_di_riferimento;
+            bottone.disabled = false;
+            bottone.audio_di_riferimento = evento_load.target;
+            titoloCanzone.addEventListener("click", (event) => {
+              if (audioPlaying !== null) {
+                console.dir(audioPlaying);
+                audioPlaying.pause();
+              }
+              event.target.audio_di_riferimento.play();
+              audioPlaying = event.target.audio_di_riferimento;
+            });
+          });
+        }
         numeroRiproduzioni.innerText = element.rank;
         durata.innerText = showTime(element.duration);
         cont++;
