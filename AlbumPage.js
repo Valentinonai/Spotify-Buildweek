@@ -1,4 +1,5 @@
 let audioPlaying = null;
+let interval = 0;
 window.addEventListener("DOMContentLoaded", () => {
   const id = new URLSearchParams(window.location.search).get("albumId");
   fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${id}`, {
@@ -91,6 +92,8 @@ window.addEventListener("DOMContentLoaded", () => {
                 console.dir(audioPlaying);
                 audioPlaying.pause();
                 audioPlaying.bottone_di_riferimento.audio_di_riferimento.currentTime = 0;
+                document.documentElement.style.setProperty("--scroll", `${0}%`);
+                clearInterval(interval);
               }
               document.querySelector("#btnPlay").classList.add("pause");
               document.querySelector("#btnPlay i:first-of-type").style = "display:none";
@@ -102,6 +105,7 @@ window.addEventListener("DOMContentLoaded", () => {
               document.querySelector("#btnPlay").addEventListener("click", playButton);
               document.querySelector("#playPlayer").addEventListener("click", play);
               document.querySelector("#pausePlayer").addEventListener("click", play);
+              audioPlaying.addEventListener("play", () => tempoReale(audioPlaying));
             });
           });
         }
@@ -185,4 +189,13 @@ const play = () => {
     play.style = "display:none";
     pause.style = "display:block";
   }
+};
+
+const tempoReale = (element) => {
+  clearInterval(interval);
+  const tAttuale = document.getElementById("tempoAttuale");
+  interval = setInterval(() => {
+    const x = (100 * element.currentTime) / element.duration;
+    document.documentElement.style.setProperty("--scroll", `${x}%`);
+  }, 1);
 };

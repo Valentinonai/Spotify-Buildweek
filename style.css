@@ -1,3 +1,6 @@
+:root {
+  --scroll: 0%;
+}
 body {
   background-color: black;
 }
@@ -241,6 +244,22 @@ hr {
 #playPlayer {
   cursor: pointer;
 }
+
+#tempoTotale {
+  width: 100%;
+  background-color: gray;
+  height: 5px;
+  border-radius: 2.5px;
+  margin-top: 5px;
+}
+#tempoAttuale {
+  background-color: white;
+  width: var(--scroll);
+  height: 5px;
+  border-radius: 2.5px;
+  margin-top: 5px;
+}
+
 /* -------------Sidebar ----------------------*/
 .sidebar {
   height: 100%;
