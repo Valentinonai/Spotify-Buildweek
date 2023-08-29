@@ -117,3 +117,10 @@ const showTime = (time) => {
   }
   return tempo;
 };
+
+const avanti = () => {
+  window.history.forward();
+};
+const indietro = () => {
+  window.history.back();
+};
