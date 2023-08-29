@@ -47,7 +47,7 @@ const creaCards = async (albums) => {
   const playListImg = document.querySelectorAll(".playListImg");
   const data = albums.data;
   if (localPreferiti) {
-    for (let i = 0; i < localPreferiti.length; i++) {
+    for (let i = 0; i < numAlbumSugg; i++) {
       const risp = await (
         await fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${localPreferiti[i]}`)
       ).json();
@@ -104,5 +104,41 @@ const creaSong = async () => {
     p.innerText = songs.data[x].artist.link;
   } catch (error) {
     console.log(error);
+  }
+};
+
+const showMore = async () => {
+  const localPreferiti = JSON.parse(localStorage.getItem("idAlbum"));
+  const showMoreId = document.querySelector("#showMoreiD");
+  showMoreId.style = "display:none";
+  if (localPreferiti) {
+    for (let i = 5; i < localPreferiti.length; i++) {
+      const risp = await (
+        await fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${localPreferiti[i]}`)
+      ).json();
+      console.log(risp);
+      const url = "./AlbumPage.html?albumId=" + risp.id;
+      document.getElementById("suggerimenti").innerHTML += `
+      <div class="col">
+      <div class="p-2 favoriti rounded">
+        <div class="rounded overflow-hidden" style="position:relative">
+          <img src="${risp.cover}" alt="img" width="100%" class="suggImg" onclick='window.location.assign("${url}")'/>
+          <div class="listHeart"><i class="bi bi-heart-fill"></i></div>
+        </div>
+        <h6 class="mt-2 suggTitle">${risp.title}</h6>
+        <p class="suggDescription">${risp.artist.name}</p>
+      </div>
+    </div>`;
+
+      document.getElementById("tuoiFavoriti").innerHTML += `
+    <div class="p-2 favoriti rounded">
+      <div class="rounded overflow-hidden" style="position:relative">
+        <img src="${risp.cover_big}" alt="img" width="100%" class="suggImg" onclick='window.location.assign("${url}")'/>
+        <div class="listHeart"><i class="bi bi-heart-fill"></i></div>
+      </div>
+      <h6 class="mt-4 suggTitle">${risp.title}</h6>
+      <p class="suggDescription pb-2">${risp.artist.name}</p>
+  </div><br>`;
+    }
   }
 };

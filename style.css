@@ -181,7 +181,11 @@ hr {
   right: 0;
   color: #65d46e;
 }
-
+#showMoreiD {
+  font-size: 12px;
+  opacity: 0.3;
+  cursor: pointer;
+}
 @media screen and (max-width: 800px) {
   #suggerimenti {
     display: none;
