@@ -217,7 +217,7 @@ hr {
 
 /* Sidebar */
 .sidebar {
-  width: 200px;
+  width: 250px;
   height: 100%;
   background-color: #000000;
   position: fixed;
@@ -235,7 +235,7 @@ hr {
   margin-left: 13px;
 }
 
-/*dropdown*/
+/*--------------------dropdown---------------------------*/
 .dropdown {
   position: relative;
   display: inline-block;
@@ -311,7 +311,7 @@ hr {
 }
 
 #rightSidebar {
-  width: 170px;
+  width: 250px;
   height: 100%;
   background-color: #000000;
   position: fixed;
