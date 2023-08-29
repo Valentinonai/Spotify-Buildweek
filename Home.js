@@ -5,7 +5,6 @@ window.addEventListener("DOMContentLoaded", () => {
   fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=album")
     .then((risp) => risp.json())
     .then((albums) => {
-      console.log(albums);
       creaCards(albums);
     })
     .catch((err) => {
@@ -29,7 +28,6 @@ const creaCards = async (albums) => {
           },
         })
       ).json();
-      console.log(risp);
       const url = "./AlbumPage.html?albumId=" + risp.id;
       document.getElementById("suggerimenti").innerHTML += `
       <div class="col">
@@ -100,7 +98,6 @@ const showMore = async () => {
           },
         })
       ).json();
-      console.log(risp);
       const url = "./AlbumPage.html?albumId=" + risp.id;
       document.getElementById("suggerimenti").innerHTML += `
       <div class="col">
@@ -125,4 +122,11 @@ const showMore = async () => {
   </div><br>`;
     }
   }
+};
+
+const avanti = () => {
+  window.history.forward();
+};
+const indietro = () => {
+  window.history.back();
 };
