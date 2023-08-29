@@ -223,7 +223,24 @@ hr {
     order: 1 !important;
   }
 }
-
+#btnPlay i:last-of-type {
+  display: none;
+  line-height: 1;
+}
+#btnPlay i:first-of-type {
+  line-height: 1;
+}
+.pause {
+  border: 1px solid red !important;
+  padding: 0 !important;
+}
+#pausePlayer {
+  cursor: pointer;
+  display: none;
+}
+#playPlayer {
+  cursor: pointer;
+}
 /* -------------Sidebar ----------------------*/
 .sidebar {
   height: 100%;

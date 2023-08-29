@@ -91,8 +91,16 @@ window.addEventListener("DOMContentLoaded", () => {
                 console.dir(audioPlaying);
                 audioPlaying.pause();
               }
+              document.querySelector("#btnPlay").classList.add("pause");
+              document.querySelector("#btnPlay i:first-of-type").style = "display:none";
+              document.querySelector("#btnPlay i:last-of-type").style = "display:block";
+              document.querySelector("#playPlayer").style = "display:none";
+              document.querySelector("#pausePlayer").style = "display:block";
               event.target.audio_di_riferimento.play();
               audioPlaying = event.target.audio_di_riferimento;
+              document.querySelector("#btnPlay").addEventListener("click", playButton);
+              document.querySelector("#playPlayer").addEventListener("click", play);
+              document.querySelector("#pausePlayer").addEventListener("click", play);
             });
           });
         }
@@ -132,4 +140,48 @@ const avanti = () => {
 };
 const indietro = () => {
   window.history.back();
+};
+
+const playButton = () => {
+  const btn = document.getElementById("btnPlay");
+  if (btn.classList.contains("pause")) {
+    btn.classList.remove("pause");
+    audioPlaying.pause();
+    document.querySelector("#btnPlay i:first-of-type").style = "display:block";
+    document.querySelector("#btnPlay i:last-of-type").style = "display:none";
+    document.querySelector("#playPlayer").style = "display:block";
+    document.querySelector("#pausePlayer").style = "display:none";
+  } else {
+    btn.classList.add("pause");
+    audioPlaying.play();
+    document.querySelector("#btnPlay i:first-of-type").style = "display:none";
+    document.querySelector("#btnPlay i:last-of-type").style = "display:block";
+    document.querySelector("#playPlayer").style = "display:none";
+    document.querySelector("#pausePlayer").style = "display:block";
+  }
+};
+
+const play = () => {
+  const play = document.querySelector("#playPlayer");
+  const pause = document.querySelector("#pausePlayer");
+  const btn = document.getElementById("btnPlay");
+  if (play.style.display === "none") {
+    btn.classList.remove("pause");
+    audioPlaying.pause();
+    document.querySelector("#btnPlay i:first-of-type").style = "display:block";
+    document.querySelector("#btnPlay i:last-of-type").style = "display:none";
+    document.querySelector("#playPlayer").style = "display:block";
+    document.querySelector("#pausePlayer").style = "display:none";
+    play.style = "display:block";
+    pause.style = "display:none";
+  } else {
+    btn.classList.add("pause");
+    audioPlaying.play();
+    document.querySelector("#btnPlay i:first-of-type").style = "display:none";
+    document.querySelector("#btnPlay i:last-of-type").style = "display:block";
+    document.querySelector("#playPlayer").style = "display:none";
+    document.querySelector("#pausePlayer").style = "display:block";
+    play.style = "display:none";
+    pause.style = "display:block";
+  }
 };
