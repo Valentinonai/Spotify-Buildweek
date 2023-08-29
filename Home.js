@@ -13,34 +13,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-/*const creaCards = (albums) => {
-  console.log(albums);
-  const data = albums.data;
-  const suggImg = document.querySelectorAll(".suggImg");
-  const suggTitle = document.querySelectorAll(".suggTitle");
-  const suggDescription = document.querySelectorAll(".suggDescription");
-  const playListTitle = document.querySelectorAll(".playListTitle");
-  const playListImg = document.querySelectorAll(".playListImg");
-
-  for (let i = 0; i < numAlbumSugg; i++) {
-    const x = Math.floor(Math.random() * data.length);
-    suggImg[i].setAttribute("src", data[x].album.cover);
-    suggImg[i].addEventListener("click", () => {
-      const url = "./AlbumPage.html?albumId=" + data[x].album.id;
-      window.location.assign(url);
-    });
-    console.log(data[x]);
-    suggTitle[i].innerText = data[x].title_short;
-    suggDescription[i].innerText = data[x].artist.name;
-    console.log(albums.data[x].title, albums.data[x].artist.name);
-  }
-  for (let i = 0; i < 6; i++) {
-    const x = Math.floor(Math.random() * albums.data.length);
-    playListImg[i].setAttribute("src", albums.data[x].album.cover);
-    playListTitle[i].innerText = albums.data[x].title;
-  }
-};*/
-
 const creaCards = async (albums) => {
   const localPreferiti = JSON.parse(localStorage.getItem("idAlbum"));
   const playListTitle = document.querySelectorAll(".playListTitle");
@@ -49,7 +21,13 @@ const creaCards = async (albums) => {
   if (localPreferiti) {
     for (let i = 0; i < numAlbumSugg; i++) {
       const risp = await (
-        await fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${localPreferiti[i]}`)
+        await fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${localPreferiti[i]}`, {
+          method: "GET",
+          headers: {
+            "X-RapidAPI-Key": "be9aa8f80cmshcb87ef0073d5d4ep15813fjsn4ee3c6fb8586",
+            "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+          },
+        })
       ).json();
       console.log(risp);
       const url = "./AlbumPage.html?albumId=" + risp.id;
@@ -114,7 +92,13 @@ const showMore = async () => {
   if (localPreferiti) {
     for (let i = 5; i < localPreferiti.length; i++) {
       const risp = await (
-        await fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${localPreferiti[i]}`)
+        await fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${localPreferiti[i]}`, {
+          method: "GET",
+          headers: {
+            "X-RapidAPI-Key": "be9aa8f80cmshcb87ef0073d5d4ep15813fjsn4ee3c6fb8586",
+            "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+          },
+        })
       ).json();
       console.log(risp);
       const url = "./AlbumPage.html?albumId=" + risp.id;

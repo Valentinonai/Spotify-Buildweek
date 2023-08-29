@@ -171,7 +171,9 @@ hr {
 .like {
   color: #65d46e !important;
 }
-
+#playerLike i:last-of-type {
+  display: none;
+}
 .suggImg {
   cursor: pointer;
 }
