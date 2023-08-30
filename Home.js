@@ -78,25 +78,27 @@ const creaSong = async () => {
     h6.innerText = songs.data[x].artist.name;
     //!Audio
     const audio = new Audio(songs.data[x].preview);
-    console.dir(audio);
     audio.bottone_di_riferimento = document.querySelector("#mainAlbumBtn button:first-of-type");
     audio.volume = 0.3;
     audio.addEventListener("canplaythrough", (evento_load) => {
       const bottone = evento_load.target.bottone_di_riferimento;
       bottone.disabled = false;
       bottone.audio_di_riferimento = evento_load.target;
-      document.querySelector("#mainAlbumBtn button:first-of-type").classList.add("pause");
+      const play = document.querySelector("#mainAlbumBtn button:first-of-type");
+      console.log(play);
+      if (play.classList.contains("pause")) {
+        play.classList.remove("pause");
+      }
       document.querySelector("#mainAlbumBtn button:first-of-type").addEventListener("click", (event) => {
         document.getElementById("pBrano").innerText = songs.data[x].album.title;
         Song = event.target.audio_di_riferimento;
         document.getElementById("imgPlayer").setAttribute("src", songs.data[x].album.cover);
-        document.querySelector("#mainAlbumBtn button:first-of-type").innerText = "Pause";
         document.querySelector("#playPlayer").style = "display:none";
         document.querySelector("#pausePlayer").style = "display:block";
         event.target.audio_di_riferimento.play();
-        document.querySelector("#mainAlbumBtn button:first-of-type").addEventListener("click", playButton);
-        document.querySelector("#playPlayer").addEventListener("click", play);
-        document.querySelector("#pausePlayer").addEventListener("click", play);
+        playButton();
+        // document.querySelector("#playPlayer").addEventListener("click", play);
+        // document.querySelector("#pausePlayer").addEventListener("click", play);
         Song.addEventListener("play", () => tempoReale(Song));
       });
     });
@@ -159,17 +161,14 @@ const volume = (event) => {
 };
 const playButton = () => {
   const play = document.querySelector("#mainAlbumBtn button:first-of-type");
-  console.log(play.classList.contains("pause"));
-  const pause = document.querySelector("#pausePlayer");
-  const btn = document.getElementById("btnPlay");
   if (play.classList.contains("pause")) {
-    console.log("prova");
     play.classList.remove("pause");
     play.innerText = "Play";
     Song.pause();
     document.querySelector("#playPlayer").style = "display:block";
     document.querySelector("#pausePlayer").style = "display:none";
   } else {
+    console.log("ciao");
     play.classList.add("pause");
     play.innerText = "Pause";
     Song.play();
@@ -182,7 +181,6 @@ const play = () => {
   const play = document.querySelector("#playPlayer");
   const pause = document.querySelector("#pausePlayer");
   const btn = document.querySelector("#mainAlbumBtn button:first-of-type");
-  console.log(btn);
   if (play.style.display === "none") {
     btn.classList.remove("pause");
     Song.pause();
