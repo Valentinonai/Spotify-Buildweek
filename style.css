@@ -425,3 +425,7 @@ span {
 #nextTrack {
   cursor: pointer;
 }
+
+button a {
+  color: white;
+}

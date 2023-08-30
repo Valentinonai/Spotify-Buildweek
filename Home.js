@@ -1,5 +1,6 @@
 const numAlbumSugg = 5;
-
+let Song = null;
+let interval = null;
 window.addEventListener("DOMContentLoaded", () => {
   creaSong();
   fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=album")
@@ -45,16 +46,6 @@ const creaCards = async (albums) => {
         <p class="suggDescription">${risp.artist.name}</p>
       </div>
     </div>`;
-
-      //     document.getElementById("tuoiFavoriti").innerHTML += `
-      //   <div class="p-2 favoriti rounded">
-      //     <div class="rounded overflow-hidden" style="position:relative">
-      //       <img src="${risp.cover_big}" alt="img" width="100%" class="suggImg" onclick='window.location.assign("${url}")'/>
-      //       <div class="listHeart"><i class="bi bi-heart-fill"></i></div>
-      //     </div>
-      //     <h6 class="mt-4 suggTitle">${risp.title}</h6>
-      //     <p class="suggDescription pb-2">${risp.artist.name}</p>
-      // </div><br>`;
     }
   }
   for (let i = 0; i < 6; i++) {
@@ -73,16 +64,42 @@ const creaSong = async () => {
   const h5 = document.querySelector("#mainDetails h5");
   const h1 = document.querySelector("#mainDetails h1");
   const h6 = document.querySelector("#mainDetails h6");
-  const p = document.querySelector("#mainDetails p");
   try {
     const risp = await fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=song");
     const songs = await risp.json();
     const x = Math.floor(Math.random() * songs.data.length);
+    console.log(songs.data[x]);
     mainImg.setAttribute("src", songs.data[x].album.cover);
+    mainImg.addEventListener("click", () => {
+      window.location.assign("./AlbumPage.html?albumId=" + songs.data[x].album.id);
+    });
     h5.innerText = songs.data[x].album.title;
     h1.innerText = songs.data[x].title_short;
     h6.innerText = songs.data[x].artist.name;
-    p.innerText = songs.data[x].artist.link;
+    //!Audio
+    const audio = new Audio(songs.data[x].preview);
+    console.dir(audio);
+    audio.bottone_di_riferimento = document.querySelector("#mainAlbumBtn button:first-of-type");
+    audio.volume = 0.3;
+    audio.addEventListener("canplaythrough", (evento_load) => {
+      const bottone = evento_load.target.bottone_di_riferimento;
+      bottone.disabled = false;
+      bottone.audio_di_riferimento = evento_load.target;
+      document.querySelector("#mainAlbumBtn button:first-of-type").classList.add("pause");
+      document.querySelector("#mainAlbumBtn button:first-of-type").addEventListener("click", (event) => {
+        document.getElementById("pBrano").innerText = songs.data[x].album.title;
+        Song = event.target.audio_di_riferimento;
+        document.getElementById("imgPlayer").setAttribute("src", songs.data[x].album.cover);
+        document.querySelector("#mainAlbumBtn button:first-of-type").innerText = "Pause";
+        document.querySelector("#playPlayer").style = "display:none";
+        document.querySelector("#pausePlayer").style = "display:block";
+        event.target.audio_di_riferimento.play();
+        document.querySelector("#mainAlbumBtn button:first-of-type").addEventListener("click", playButton);
+        document.querySelector("#playPlayer").addEventListener("click", play);
+        document.querySelector("#pausePlayer").addEventListener("click", play);
+        Song.addEventListener("play", () => tempoReale(Song));
+      });
+    });
   } catch (error) {
     console.log(error);
   }
@@ -116,16 +133,6 @@ const showMore = async () => {
         <p class="suggDescription">${risp.artist.name}</p>
       </div>
     </div>`;
-
-      //     document.getElementById("tuoiFavoriti").innerHTML += `
-      //   <div class="p-2 favoriti rounded">
-      //     <div class="rounded overflow-hidden" style="position:relative">
-      //       <img src="${risp.cover_big}" alt="img" width="100%" class="suggImg" onclick='window.location.assign("${url}")'/>
-      //       <div class="listHeart"><i class="bi bi-heart-fill"></i></div>
-      //     </div>
-      //     <h6 class="mt-4 suggTitle">${risp.title}</h6>
-      //     <p class="suggDescription pb-2">${risp.artist.name}</p>
-      // </div><br>`;
     }
   }
 };
@@ -137,36 +144,60 @@ const indietro = () => {
   window.history.back();
 };
 
-const prova = async () => {
-  const url = "https://deezerdevs-deezer.p.rapidapi.com/artist/412";
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "be9aa8f80cmshcb87ef0073d5d4ep15813fjsn4ee3c6fb8586",
-      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-    },
-  };
+const tempoReale = (element) => {
+  clearInterval(interval);
+  const tAttuale = document.getElementById("tempoAttuale");
+  interval = setInterval(() => {
+    const x = (100 * element.currentTime) / element.duration;
+    document.documentElement.style.setProperty("--scroll", `${x}%`);
+  }, 1);
+};
 
-  try {
-    const response = await fetch(url, options);
-    const result = await response.json();
-    const resp = await fetch("https://cryptic-headland-94862.herokuapp.com/" + result.tracklist, {
-      body: undefined, // string, FormData, Blob, BufferSource, o URLSearchParams
-      referrer: "", // oppure "" per inviare un header di Referer nullo,
-      referrerPolicy: "no-referrer-when-downgrade", // no-referrer, origin, same-origin...
-      mode: "cors", // same-origin, no-cors
-      credentials: "same-origin", // omit, include
-      cache: "default", // no-store, reload, no-cache, force-cache, or only-if-cached
-      redirect: "follow", // manual, error
-      header: {
-        "X-RapidAPI-Key": "be9aa8f80cmshcb87ef0073d5d4ep15813fjsn4ee3c6fb8586",
-        "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-      },
-    });
-    // const res = await resp.json();
-    console.log(resp);
-  } catch (error) {
-    console.error(error);
+const volume = (event) => {
+  const vol = parseFloat(event.target.value).toFixed(3);
+  Song.volume = vol;
+};
+const playButton = () => {
+  const play = document.querySelector("#mainAlbumBtn button:first-of-type");
+  console.log(play.classList.contains("pause"));
+  const pause = document.querySelector("#pausePlayer");
+  const btn = document.getElementById("btnPlay");
+  if (play.classList.contains("pause")) {
+    console.log("prova");
+    play.classList.remove("pause");
+    play.innerText = "Play";
+    Song.pause();
+    document.querySelector("#playPlayer").style = "display:block";
+    document.querySelector("#pausePlayer").style = "display:none";
+  } else {
+    play.classList.add("pause");
+    play.innerText = "Pause";
+    Song.play();
+    document.querySelector("#playPlayer").style = "display:none";
+    document.querySelector("#pausePlayer").style = "display:block";
   }
 };
-prova();
+
+const play = () => {
+  const play = document.querySelector("#playPlayer");
+  const pause = document.querySelector("#pausePlayer");
+  const btn = document.querySelector("#mainAlbumBtn button:first-of-type");
+  console.log(btn);
+  if (play.style.display === "none") {
+    btn.classList.remove("pause");
+    Song.pause();
+    btn.innerText = "Play";
+    document.querySelector("#playPlayer").style = "display:block";
+    document.querySelector("#pausePlayer").style = "display:none";
+    play.style = "display:block";
+    pause.style = "display:none";
+  } else {
+    btn.classList.add("pause");
+    Song.play();
+    btn.innerText = "Pause";
+    document.querySelector("#playPlayer").style = "display:none";
+    document.querySelector("#pausePlayer").style = "display:block";
+    play.style = "display:none";
+    pause.style = "display:block";
+  }
+};

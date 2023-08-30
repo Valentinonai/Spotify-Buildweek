@@ -19,6 +19,10 @@ window.addEventListener("DOMContentLoaded", () => {
       document.getElementById("titoloAlbum").innerText = album.title;
       document.getElementById("albumDetail").innerText =
         album.artist.name + " " + album.release_date + " n°" + album.nb_tracks + " brani, " + showTime(album.duration);
+      document.getElementById("albumDetail").addEventListener("click", () => {
+        window.location.assign("./ArtistPage.html?artistId=" + album.artist.name);
+      });
+      document.getElementById("albumDetail").style = "cursor:pointer";
       document.getElementById("imgArtista").setAttribute("src", album.artist.picture);
       const like = document.getElementById("like");
       if (localStorage.getItem("idAlbum")) {
@@ -116,6 +120,9 @@ window.addEventListener("DOMContentLoaded", () => {
               document.querySelector("#playPlayer").addEventListener("click", play);
               document.querySelector("#pausePlayer").addEventListener("click", play);
               audioPlaying.addEventListener("play", () => tempoReale(audioPlaying));
+              const download = document.getElementById("download");
+              download.setAttribute("href", element.preview);
+              download.setAttribute("download", "song");
             });
           });
         }
