@@ -30,6 +30,7 @@ const creaCards = async (albums) => {
         })
       ).json();
       const url = "./AlbumPage.html?albumId=" + risp.id;
+      console.log(risp);
       document.getElementById("suggerimenti").innerHTML += `
       <div class="col">
       <div class="p-2 favoriti rounded">
