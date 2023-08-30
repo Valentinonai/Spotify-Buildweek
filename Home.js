@@ -19,6 +19,7 @@ const creaCards = async (albums) => {
   const data = albums.data;
   if (localPreferiti) {
     for (let i = 0; i < numAlbumSugg; i++) {
+      console.log(localPreferiti[i]);
       const risp = await (
         await fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${localPreferiti[i]}`, {
           method: "GET",
@@ -98,6 +99,7 @@ const showMore = async () => {
           },
         })
       ).json();
+      console.log(risp);
       const url = "./AlbumPage.html?albumId=" + risp.id;
       document.getElementById("suggerimenti").innerHTML += `
       <div class="col">

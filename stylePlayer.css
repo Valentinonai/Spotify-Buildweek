@@ -56,3 +56,10 @@ div.container div.fixed-bottom div.row div.musicButton {
     color: #fff;
   }
 }
+
+#pBrano {
+  margin-bottom: 0;
+}
+#pArtista {
+  margin-bottom: 0;
+}

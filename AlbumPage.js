@@ -63,6 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
           document.querySelector("#playerLike i:last-of-type").classList.add("like");
           if (localStorage.getItem("idAlbum")) {
             arrayFavoriti.push(album.id);
+            console.log(album);
             localStorage.setItem("idAlbum", JSON.stringify(arrayFavoriti));
           } else {
             const arrayFavoriti = [];
@@ -95,6 +96,8 @@ window.addEventListener("DOMContentLoaded", () => {
                 document.documentElement.style.setProperty("--scroll", `${0}%`);
                 clearInterval(interval);
               }
+              document.getElementById("pBrano").innerText = element.title;
+              console.log(element.title);
               document.querySelector("#btnPlay").classList.add("pause");
               document.querySelector("#btnPlay i:first-of-type").style = "display:none";
               document.querySelector("#btnPlay i:last-of-type").style = "display:block";
