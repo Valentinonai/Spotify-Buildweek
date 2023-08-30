@@ -117,4 +117,37 @@ div.container-fluid div.row div.col-9 div.backgroundBlack div.row div.col-5 div.
   position: absolute;
   z-index: -1;
   width: 100%;
-} /*# sourceMappingURL=ArtistPage.css.map */
+}
+
+.sidebar {
+  width: 200px;
+  height: 100%;
+  background-color: #000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  color: white;
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+#rightSidebar {
+  width: 170px;
+  height: 100%;
+  background-color: #000000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  font-size: 10px;
+  color: white;
+  margin-left: 10px;
+}
+
+.icon-wrapper {
+  margin-bottom: 10px;
+  margin-left: 13px;
+}/*# sourceMappingURL=ArtistPage.css.map */
