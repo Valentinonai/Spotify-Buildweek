@@ -1,16 +1,16 @@
 div.container-fluid {
   margin: 0;
   div.row {
-    div.col-9 {
+    div.col-lg-8 {
       div#header {
         background-size: cover;
-        height: 250px;
+        height: 500px;
         margin: 0;
         padding: 0;
 
         div {
           p {
-            font-size: 14px;
+            font-size: 24px;
             color: white;
             font-weight: 600;
             padding-left: 20px;
@@ -27,50 +27,51 @@ div.container-fluid {
         background-color: rgb(80, 80, 80);
         padding-left: 10px;
         color: white;
-        div#playArtist {
-          padding-top: 15px;
-          height: 70px;
-          font-size: 30px;
-          align-items: baseline;
+        height: calc(100% - 500px);
+      }
+      div#playArtist {
+        padding-top: 15px;
+        height: 70px;
+        font-size: 30px;
+        align-items: baseline;
 
-          //   i {
-          //   }
-          button {
-            margin-inline: 10px;
-            height: 35px;
-            button :active {
-              opacity: 0.5;
-            }
+        //   i {
+        //   }
+        button {
+          margin-inline: 10px;
+          height: 35px;
+          button :active {
+            opacity: 0.5;
           }
         }
-        div.row {
-          div.col-7 {
-            h5 {
-              font-size: 20px;
-              font-weight: 700;
-              margin-bottom: 20px;
-            }
+      }
+      div.row {
+        div.col-7 {
+          h5 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
           }
-          div#braniPopolari {
-            font-size: 14px;
-            p#numeroBrano {
-              font-size: 20px;
-            }
+        }
+        div#braniPopolari {
+          font-size: 14px;
+          p#numeroBrano {
+            font-size: 20px;
           }
-          div.col-5 {
-            h5 {
-              font-size: 20px;
-              margin-bottom: 20px;
+        }
+        div.col-5 {
+          h5 {
+            font-size: 20px;
+            margin-bottom: 20px;
+          }
+          div.d-flex {
+            h6 {
+              font-size: 16px;
+              margin-left: 3px;
             }
-            div.d-flex {
-              h6 {
-                font-size: 16px;
-                margin-left: 3px;
-              }
-              p {
-                font-size: 12px;
-                margin-left: 3px;
-              }
+            p {
+              font-size: 12px;
+              margin-left: 3px;
             }
           }
         }
@@ -78,6 +79,7 @@ div.container-fluid {
     }
   }
 }
+
 .navBtnCustom {
   font-size: 20px;
   color: gray;
@@ -98,15 +100,15 @@ div.container-fluid {
   background-color: black;
 }
 #durataBranoPopolare {
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 600px) {
     display: none;
   }
 }
-.infoBrano {
-  margin-left: 5px;
-}
 
 @media (max-width: 600px) {
+  #moreOptions {
+    transform: rotate();
+  }
   #playArtist {
     justify-content: space-between;
     padding-inline: 10px;
@@ -136,6 +138,7 @@ div.container-fluid {
   padding-top: 20px;
   color: white;
   font-size: 12px;
+  padding-left: 20px;
 }
 
 .icon-wrapper {
@@ -241,7 +244,7 @@ div.container-fluid {
 }
 
 h5 {
-  font-size: 9px;
+  font-size: 18px;
 }
 
 h5 img {
@@ -250,11 +253,12 @@ h5 img {
 }
 
 p {
-  margin-left: 11px;
+  padding-left: 11px;
 }
 
 .pippo1 {
   margin-left: 15px;
+  font-size: 14px;
 }
 
 span {
@@ -263,25 +267,21 @@ span {
 .zio {
   margin-top: -29px;
 }
-#rightSidebar {
-  width: 170px;
-  height: 100%;
-  background-color: #000000;
-  position: fixed;
-  top: 0;
-  right: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
-  font-size: 10px;
-  color: white;
-
-  margin-left: 10px;
-}
 
 .icon-wrapper {
   margin-bottom: 10px;
   margin-left: 13px;
 }
-.col-9 {
+.col-8 {
   flex-grow: 4;
+}
+@media screen and (max-width: 500px) {
+}
+.hideDiv {
+  display: none !important;
+}
+
+#visualizzaBtn {
+  background-color: transparent;
+  border: 0;
 }

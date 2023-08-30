@@ -1,62 +1,63 @@
 div.container-fluid {
   margin: 0;
 }
-div.container-fluid div.row div.col-9 div#header {
+div.container-fluid div.row div.col-lg-8 div#header {
   background-size: cover;
-  height: 250px;
+  height: 500px;
   margin: 0;
   padding: 0;
 }
-div.container-fluid div.row div.col-9 div#header div p {
-  font-size: 14px;
+div.container-fluid div.row div.col-lg-8 div#header div p {
+  font-size: 24px;
   color: white;
   font-weight: 600;
   padding-left: 20px;
   margin-bottom: 0;
 }
-div.container-fluid div.row div.col-9 div#header div h1 {
+div.container-fluid div.row div.col-lg-8 div#header div h1 {
   font-size: 50px;
   color: white;
   padding-left: 14px;
 }
-div.container-fluid div.row div.col-9 div.backgroundBlack {
+div.container-fluid div.row div.col-lg-8 div.backgroundBlack {
   background-color: rgb(80, 80, 80);
   padding-left: 10px;
   color: white;
+  height: calc(100% - 500px);
 }
-div.container-fluid div.row div.col-9 div.backgroundBlack div#playArtist {
+div.container-fluid div.row div.col-lg-8 div#playArtist {
   padding-top: 15px;
   height: 70px;
   font-size: 30px;
   align-items: baseline;
 }
-div.container-fluid div.row div.col-9 div.backgroundBlack div#playArtist button {
+div.container-fluid div.row div.col-lg-8 div#playArtist button {
   margin-inline: 10px;
   height: 35px;
 }
-div.container-fluid div.row div.col-9 div.backgroundBlack div#playArtist button button :active {
+div.container-fluid div.row div.col-lg-8 div#playArtist button button :active {
   opacity: 0.5;
 }
-div.container-fluid div.row div.col-9 div.backgroundBlack div.row div.col-7 h5 {
+div.container-fluid div.row div.col-lg-8 div.row div.col-7 h5 {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 20px;
 }
-div.container-fluid div.row div.col-9 div.backgroundBlack div.row div#braniPopolari {
+div.container-fluid div.row div.col-lg-8 div.row div#braniPopolari {
   font-size: 14px;
 }
-div.container-fluid div.row div.col-9 div.backgroundBlack div.row div#braniPopolari p#numeroBrano {
+div.container-fluid div.row div.col-lg-8 div.row div#braniPopolari p#numeroBrano {
   font-size: 20px;
 }
-div.container-fluid div.row div.col-9 div.backgroundBlack div.row div.col-5 h5 {
+div.container-fluid div.row div.col-lg-8 div.row div.col-5 h5 {
   font-size: 20px;
   margin-bottom: 20px;
 }
-div.container-fluid div.row div.col-9 div.backgroundBlack div.row div.col-5 div.d-flex h6 {
+div.container-fluid div.row div.col-lg-8 div.row div.col-5 div.d-flex h6 {
   font-size: 16px;
   margin-left: 3px;
 }
-div.container-fluid div.row div.col-9 div.backgroundBlack div.row div.col-5 div.d-flex p {
+div.container-fluid div.row div.col-lg-8 div.row div.col-5 div.d-flex p {
   font-size: 12px;
   margin-left: 3px;
 }
@@ -84,17 +85,16 @@ div.container-fluid div.row div.col-9 div.backgroundBlack div.row div.col-5 div.
   background-color: black;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 600px) {
   #durataBranoPopolare {
     display: none;
   }
 }
 
-.infoBrano {
-  margin-left: 5px;
-}
-
 @media (max-width: 600px) {
+  #moreOptions {
+    transform: rotate();
+  }
   #playArtist {
     justify-content: space-between;
     padding-inline: 10px;
@@ -126,6 +126,7 @@ div.container-fluid div.row div.col-9 div.backgroundBlack div.row div.col-5 div.
   padding-top: 20px;
   color: white;
   font-size: 12px;
+  padding-left: 20px;
 }
 
 .icon-wrapper {
@@ -235,7 +236,7 @@ div.container-fluid div.row div.col-9 div.backgroundBlack div.row div.col-5 div.
 }
 
 h5 {
-  font-size: 9px;
+  font-size: 18px;
 }
 
 h5 img {
@@ -244,11 +245,12 @@ h5 img {
 }
 
 p {
-  margin-left: 11px;
+  padding-left: 11px;
 }
 
 .pippo1 {
   margin-left: 15px;
+  font-size: 14px;
 }
 
 span {
@@ -259,25 +261,20 @@ span {
   margin-top: -29px;
 }
 
-#rightSidebar {
-  width: 170px;
-  height: 100%;
-  background-color: #000000;
-  position: fixed;
-  top: 0;
-  right: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
-  font-size: 10px;
-  color: white;
-  margin-left: 10px;
-}
-
 .icon-wrapper {
   margin-bottom: 10px;
   margin-left: 13px;
 }
 
-.col-9 {
+.col-8 {
   flex-grow: 4;
+}
+
+.hideDiv {
+  display: none !important;
+}
+
+#visualizzaBtn {
+  background-color: transparent;
+  border: 0;
 }/*# sourceMappingURL=ArtistPage.css.map */
