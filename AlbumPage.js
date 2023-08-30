@@ -92,7 +92,6 @@ window.addEventListener("DOMContentLoaded", () => {
           audio.bottone_di_riferimento = titoloCanzone;
           audio.volume = 0.3;
           arrayCanzoni.push(audio);
-          // console.dir(audio);
           audio.addEventListener("canplaythrough", (evento_load) => {
             const bottone = evento_load.target.bottone_di_riferimento;
             bottone.disabled = false;
