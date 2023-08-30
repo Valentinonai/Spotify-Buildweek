@@ -18,7 +18,10 @@ const creaCards = async (albums) => {
   const playListImg = document.querySelectorAll(".playListImg");
   const data = albums.data;
   if (localPreferiti) {
-    for (let i = 0; i < localPreferiti.length; i++) {
+    let cont = 0;
+    if (localPreferiti.length > 5) cont = 5;
+    else cont = localPreferiti.length;
+    for (let i = 0; i < cont; i++) {
       console.log(localPreferiti[i]);
       const risp = await (
         await fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${localPreferiti[i]}`, {
