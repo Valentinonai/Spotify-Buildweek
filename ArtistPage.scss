@@ -3,7 +3,6 @@ div.container-fluid {
   div.row {
     div.col-9 {
       div#header {
-        background-image: url(https://ips.plug.it/cips/supereva/cms/2019/02/freddie-mercury.jpg);
         background-size: cover;
         height: 250px;
         margin: 0;
@@ -32,11 +31,13 @@ div.container-fluid {
           padding-top: 15px;
           height: 70px;
           font-size: 30px;
+          align-items: baseline;
 
           //   i {
           //   }
           button {
             margin-inline: 10px;
+            height: 35px;
             button :active {
               opacity: 0.5;
             }
@@ -113,4 +114,18 @@ div.container-fluid {
       order: 1;
     }
   }
+}
+#followingBtn {
+  background-color: green;
+  border-radius: 15px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+#immagineArtista {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
 }

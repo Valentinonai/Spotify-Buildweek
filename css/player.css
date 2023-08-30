@@ -1,0 +1,59 @@
+div.container {
+  height: 75px;
+}
+div.container div.fixed-bottom {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+div.container div.fixed-bottom div.row {
+  justify-content: space-between;
+}
+div.container div.fixed-bottom div.row div.col-sm-2 {
+  align-self: center;
+}
+div.container div.fixed-bottom div.row div.col-sm-2 #pArtistaBrano {
+  font-size: 12px;
+  align-self: center;
+}
+@media (max-width: 550px) {
+  div.container div.fixed-bottom div.row div.col-sm-2 #pArtistaBrano {
+    font-size: 10px;
+  }
+}
+div.container div.fixed-bottom div.row div.col-sm-2 p#pBrano {
+  width: max-content;
+  font-size: 14px;
+  font-weight: 600;
+}
+@media (max-width: 550px) {
+  div.container div.fixed-bottom div.row div.col-sm-2 p#pBrano {
+    font-size: 12px;
+  }
+}
+div.container div.fixed-bottom div.row div.col-sm-2 .preferiti {
+  align-self: center;
+}
+div.container div.fixed-bottom div.row div.musicButton {
+  color: rgb(109, 108, 108);
+  margin: auto;
+  align-self: center;
+}
+@media screen and (max-width: 1200px) {
+  div.container div.fixed-bottom div.row div.musicButton {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 570px) {
+  .hideButton {
+    display: none;
+  }
+  .playerButtons {
+    order: 2;
+    align-self: flex-end;
+  }
+  #musicPlayer {
+    order: 1;
+    color: white;
+  }
+} /*# sourceMappingURL=player.css.map */

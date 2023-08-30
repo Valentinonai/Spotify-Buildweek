@@ -17,8 +17,9 @@
     <div class="container-fluid">
       <div class="row gx-0">
         <div class="col-2"><div style="background-color: red; height: 100vh"></div></div>
-        <div class="col-9">
-          <div id="header">
+        <div style="position: relative" class="col-9">
+          <div id="immagineArtista"></div>
+          <div style="z-index: 2" id="header">
             <div id="nav" class="d-flex justify-content-between align-items-center mb-3">
               <div id="navBtn" class="d-flex">
                 <div class="me-2 mx-3 navBtnCustom"><i class="bi bi-arrow-left-circle"></i></div>
@@ -33,13 +34,7 @@
                     aria-expanded="false"
                     id="dropDownButton"
                   >
-                    <img
-                      src="./assets/imgs/main/image-15.jpg"
-                      alt="User"
-                      width="20px"
-                      height="20px"
-                      class="rounded-circle me-1"
-                    />
+                    <img src="#" alt="User" width="20px" height="20px" class="rounded-circle me-1" />
 
                     User.........
                   </button>
@@ -52,32 +47,35 @@
               </div>
             </div>
             <div id="artistaVerificato" class="mt-5">
-              <p>Artista Verificato</p>
-              <h1>YellowCard</h1>
-              <p>3.344.158 ascoltatori mensili</p>
+              <!-- <p>Artista Verificato</p>
+              <h1 id="nomeArtista">YellowCard</h1>
+              <p id="ascoltatoriMensili">3.344.158 ascoltatori mensili</p> -->
             </div>
           </div>
           <div class="backgroundBlack">
             <div id="playArtist" class="d-flex">
-              <i id="followingBtn" class="bi bi-play-circle-fill"></i> <button class="btn btn-dark">Following</button>
-              <i id="moreOptions" class="bi bi-three-dots"></i>
+              <div id="followingBtn">
+                <i class="bi bi-play-fill"></i>
+              </div>
+              <button class="btn btn-dark">Following</button>
+              <div><i id="moreOptions" class="bi bi-three-dots"></i></div>
             </div>
             <div class="row">
               <div class="col-7">
                 <h5>Popolari</h5>
                 <div class="d-flex justify-content-between" id="braniPopolari">
-                  <div class="d-flex">
-                    <p id="numeroBrano">1</p>
+                  <div id="braniArtista" class="d-flex">
+                    <!-- <p id="numeroBrano">1</p>
                     <img
                       class="mx-2"
-                      style="object-fit: cover; width: 40px"
+                      style="object-fit: cover; width: 40px; height: 40px"
                       id="imgBranoPopolare"
-                      src="/assets/imgs/main/image-14.jpg"
+                      src="#"
                       alt=""
                     />
                     <p id="titoloBranoPopolare">Ocean Avenue</p>
                     <p id="ascoltiBranoPopolare" class="infoBrano">276.748.928</p>
-                    <p id="durataBranoPopolare" class="infoBrano">3:18</p>
+                    <p id="durataBranoPopolare" class="infoBrano">3:18</p> -->
                   </div>
                 </div>
                 <div id="visualizzaAltro" class="col-12 mt-3"><p>Visualizza Altro</p></div>
@@ -85,7 +83,7 @@
               <div class="col-12 col-md-5">
                 <h5>Brani che ti piacciono</h5>
                 <div class="d-flex">
-                  <div><img width="50px" src="/assets/imgs/search/image-25.jpeg" alt="" /></div>
+                  <div><img width="50px" src="#" alt="" /></div>
                   <div>
                     <h6 id="braniLiked">Hai messo Mi piace a 11 brani</h6>
                     <p id="bandLiked">di Yellow Card</p>
@@ -98,10 +96,12 @@
         <div class="col-1"><div style="background-color: red; height: 100vh"></div></div>
       </div>
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+    <script src="/ArtistPage.js"></script>
   </body>
 </html>
