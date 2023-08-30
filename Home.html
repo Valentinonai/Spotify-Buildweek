@@ -193,40 +193,41 @@
     </div>
     <!-- ***********Player*********** -->
     <div class="container text-white">
-      <div class="fixed-bottom bg-dark">
-        <div class="row mx-1 gx-5">
-          <div class="col-sm-2 col-6 w-content m-0 p-0">
-            <div class="d-flex">
+      <div class="fixed-bottom bg-dark text-white">
+        <div class="row">
+          <div class="d-none d-md-block col-sm-3 col-md- m-0 p-0">
+            <div class="d-flex align-items-center px-1">
               <div>
-                <img width="60px" class="m-2" id="imgPlayer" src="/assets/imgs/main/image-1.jpg" alt="" />
+                <img class="p-2" width="60px" id="imgPlayer" src="/assets/imgs/main/image-1.jpg" alt="" />
               </div>
-              <div id="pArtistaBrano">
-                <p id="pBrano">Fat Funny Friend</p>
-                <p id="pArtista">maddie Zahm</p>
+              <div id="pArtistaBrano" class="d-flex flex-column justify-content-center">
+                <p id="pBrano" class="m-0 ps-1">Fat Funny Friend</p>
+                <p id="pArtista" class="m-0 ps-1">maddie Zahm</p>
               </div>
-              <div class="preferiti"><i class="bi bi-heart mx-3"></i></div>
+              <div class="preferiti ps-2" id="playerLike">
+                <i class="bi bi-heart"></i><i class="bi bi-heart-fill"></i>
+              </div>
             </div>
           </div>
-          <div class="col-sm-2 col-4 m-0 p-0 playerButtons">
-            <div class="d-flex justify-content-between align-items-center">
-              <i class="bi bi-shuffle hideButton"></i>
-              <i class="bi bi-skip-start-fill hideButton"></i>
-              <i class="bi bi-play-circle-fill"></i>
-              <i class="bi bi-pause-circle-fill d-none hideButton"></i>
-              <i class="bi bi-skip-end-fill hideButton"></i>
-              <i class="bi bi-arrow-clockwise hideButton"></i>
+          <div class="col-8 col-sm-9 col-md-6 m-0 ps-3 p-md-0 playerButtons">
+            <div class="d-flex justify-content-center align-items-center flex-column pt-2">
+              <div class="d-flex align-items-center pb-1" style="width: 80%; justify-content: space-between">
+                <div><i class="bi bi-shuffle hideButton"></i></div>
+                <div id="prevTrack"><i class="bi bi-skip-start-fill hideButton"></i></div>
+                <div id="playPlayer"><i class="bi bi-play-circle-fill"></i></div>
+                <div id="pausePlayer"><i class="bi bi-pause-circle-fill"></i></div>
+                <div id="nextTrack"><i class="bi bi-skip-end-fill hideButton"></i></div>
+                <div><i class="bi bi-arrow-clockwise hideButton"></i></div>
+              </div>
+              <div id="tempoTotale" class="mb-3">
+                <div id="tempoAttuale" class="m-0"></div>
+              </div>
             </div>
           </div>
-          <div class="col-2 m-0 p-0 musicButton">
-            <div class="d-flex justify-content-between align-items-center">
-              <i class="bi bi-mic hideButton"></i>
-              <i class="bi bi-music-note-list hideButton"></i>
-              <i id="musicPlayer" class="bi bi-music-player"></i>
-              <i class="bi bi-volume-up hideButton"></i>
-              <!-- <div class="volume-slider-con">
-                <div class="volume-slider"></div>
-              </div> -->
-              <i class="bi bi-arrows-angle-expand hideButton"></i>
+          <div class="col-4 col-sm-3 m-0 p-0 musicButton">
+            <div class="d-flex align-items-center justify-content-center flex-column px-2 pb-2">
+              <span class="pb-2">Volume</span
+              ><input type="range" id="volume" min="0" max="1" value="0.3" step="any" oninput="volume(event)" />
             </div>
           </div>
         </div>
