@@ -113,7 +113,7 @@ window.addEventListener("DOMContentLoaded", () => {
               document.querySelector("#btnPlay i:last-of-type").style = "display:block";
               document.querySelector("#playPlayer").style = "display:none";
               document.querySelector("#pausePlayer").style = "display:block";
-              event.target.audio_di_riferimento.play();
+              event.currentTarget.audio_di_riferimento.play();
               audioPlaying = event.target.audio_di_riferimento;
               document.querySelector("#btnPlay").addEventListener("click", playButton);
               document.querySelector("#playPlayer").addEventListener("click", play);

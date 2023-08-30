@@ -46,6 +46,16 @@ const creaCards = async (albums) => {
         <p class="suggDescription">${risp.artist.name}</p>
       </div>
     </div>`;
+
+      document.getElementById("tuoiFavoriti").innerHTML += `
+    <div class="p-2 favoriti rounded">
+      <div class="rounded overflow-hidden" style="position:relative">
+        <img src="${risp.cover_big}" alt="img" width="100%" class="suggImg" onclick='window.location.assign("${url}")'/>
+        <div class="listHeart"><i class="bi bi-heart-fill"></i></div>
+      </div>
+      <h6 class="mt-4 suggTitle">${risp.title}</h6>
+      <p class="suggDescription pb-2">${risp.artist.name}</p>
+  </div><br>`;
     }
   }
   for (let i = 0; i < 6; i++) {
@@ -85,7 +95,6 @@ const creaSong = async () => {
       bottone.disabled = false;
       bottone.audio_di_riferimento = evento_load.target;
       const play = document.querySelector("#mainAlbumBtn button:first-of-type");
-      console.log(play);
       if (play.classList.contains("pause")) {
         play.classList.remove("pause");
       }
@@ -97,8 +106,8 @@ const creaSong = async () => {
         document.querySelector("#pausePlayer").style = "display:block";
         event.target.audio_di_riferimento.play();
         playButton();
-        document.querySelector("#playPlayer").addEventListener("click", play);
-        document.querySelector("#pausePlayer").addEventListener("click", play);
+        document.querySelector("#playPlayer").addEventListener("click", playbar);
+        document.querySelector("#pausePlayer").addEventListener("click", playbar);
         Song.addEventListener("play", () => tempoReale(Song));
       });
     });
@@ -135,6 +144,16 @@ const showMore = async () => {
         <p class="suggDescription">${risp.artist.name}</p>
       </div>
     </div>`;
+
+      document.getElementById("tuoiFavoriti").innerHTML += `
+    <div class="p-2 favoriti rounded">
+      <div class="rounded overflow-hidden" style="position:relative">
+        <img src="${risp.cover_big}" alt="img" width="100%" class="suggImg" onclick='window.location.assign("${url}")'/>
+        <div class="listHeart"><i class="bi bi-heart-fill"></i></div>
+      </div>
+      <h6 class="mt-4 suggTitle">${risp.title}</h6>
+      <p class="suggDescription pb-2">${risp.artist.name}</p>
+  </div><br>`;
     }
   }
 };
@@ -168,7 +187,6 @@ const playButton = () => {
     document.querySelector("#playPlayer").style = "display:block";
     document.querySelector("#pausePlayer").style = "display:none";
   } else {
-    console.log("ciao");
     play.classList.add("pause");
     play.innerText = "Pause";
     Song.play();
@@ -177,7 +195,7 @@ const playButton = () => {
   }
 };
 
-const play = () => {
+const playbar = () => {
   const play = document.querySelector("#playPlayer");
   const pause = document.querySelector("#pausePlayer");
   const btn = document.querySelector("#mainAlbumBtn button:first-of-type");
