@@ -84,6 +84,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (element.preview) {
           const audio = new Audio(element.preview);
           audio.bottone_di_riferimento = titoloCanzone;
+          audio.volume = 0.5;
           audio.addEventListener("canplaythrough", (evento_load) => {
             const bottone = evento_load.target.bottone_di_riferimento;
             bottone.disabled = false;
@@ -201,4 +202,9 @@ const tempoReale = (element) => {
     const x = (100 * element.currentTime) / element.duration;
     document.documentElement.style.setProperty("--scroll", `${x}%`);
   }, 1);
+};
+
+const volume = (event) => {
+  const vol = parseFloat(event.target.value).toFixed(3);
+  audioPlaying.volume = vol;
 };

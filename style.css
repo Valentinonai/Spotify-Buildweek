@@ -395,3 +395,22 @@ span {
 .zio {
   margin-top: -29px;
 }
+
+/* Volume */
+#volume {
+  appearance: none;
+  width: 150px;
+  height: 8px;
+  background-color: #65d46e;
+  opacity: 0.6;
+  border-radius: 10px;
+  margin-inline: 20px;
+  cursor: pointer;
+}
+#volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+}

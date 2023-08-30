@@ -136,3 +136,37 @@ const avanti = () => {
 const indietro = () => {
   window.history.back();
 };
+
+const prova = async () => {
+  const url = "https://deezerdevs-deezer.p.rapidapi.com/artist/412";
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": "be9aa8f80cmshcb87ef0073d5d4ep15813fjsn4ee3c6fb8586",
+      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+    },
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    const resp = await fetch("https://cryptic-headland-94862.herokuapp.com/" + result.tracklist, {
+      body: undefined, // string, FormData, Blob, BufferSource, o URLSearchParams
+      referrer: "", // oppure "" per inviare un header di Referer nullo,
+      referrerPolicy: "no-referrer-when-downgrade", // no-referrer, origin, same-origin...
+      mode: "cors", // same-origin, no-cors
+      credentials: "same-origin", // omit, include
+      cache: "default", // no-store, reload, no-cache, force-cache, or only-if-cached
+      redirect: "follow", // manual, error
+      header: {
+        "X-RapidAPI-Key": "be9aa8f80cmshcb87ef0073d5d4ep15813fjsn4ee3c6fb8586",
+        "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+      },
+    });
+    // const res = await resp.json();
+    console.log(resp);
+  } catch (error) {
+    console.error(error);
+  }
+};
+prova();

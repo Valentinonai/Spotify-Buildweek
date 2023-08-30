@@ -203,13 +203,18 @@
               <div id="tempoAttuale"></div>
             </div>
           </div>
-          <div class="col-2 m-0 p-0 musicButton">
+          <!-- <div class="col-2 m-0 p-0 musicButton">
             <div class="d-flex justify-content-between align-items-center">
               <i class="bi bi-mic hideButton"></i>
               <i class="bi bi-music-note-list hideButton"></i>
               <i id="musicPlayer" class="bi bi-music-player"></i>
               <i class="bi bi-volume-up hideButton"></i>
               <i class="bi bi-arrows-angle-expand hideButton"></i>
+            </div>
+          </div> -->
+          <div class="col-2 m-0 p-0 musicButton">
+            <div class="d-flex align-items-center justify-content-center fs-4 me-3">
+              - <input type="range" id="volume" min="0.1" max="1" value="0.5" step="any" oninput="volume(event)" /> +
             </div>
           </div>
         </div>
@@ -222,6 +227,8 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.createjs.com/soundjs-0.5.2.min.js"></script>
+
     <script src="AlbumPage.js"></script>
   </body>
 </html>
