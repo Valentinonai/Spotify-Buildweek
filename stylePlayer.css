@@ -43,19 +43,6 @@ div.container div.fixed-bottom div.row div.musicButton {
     font-size: 12px;
   }
 }
-@media (max-width: 570px) {
-  .hideButton {
-    display: none;
-  }
-  .playerButtons {
-    order: 2;
-    align-self: flex-end;
-  }
-  #musicPlayer {
-    order: 1;
-    color: #fff;
-  }
-}
 
 #pBrano {
   margin-bottom: 0;

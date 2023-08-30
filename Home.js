@@ -46,15 +46,15 @@ const creaCards = async (albums) => {
       </div>
     </div>`;
 
-      document.getElementById("tuoiFavoriti").innerHTML += `
-    <div class="p-2 favoriti rounded">
-      <div class="rounded overflow-hidden" style="position:relative">
-        <img src="${risp.cover_big}" alt="img" width="100%" class="suggImg" onclick='window.location.assign("${url}")'/>
-        <div class="listHeart"><i class="bi bi-heart-fill"></i></div>
-      </div>
-      <h6 class="mt-4 suggTitle">${risp.title}</h6>
-      <p class="suggDescription pb-2">${risp.artist.name}</p>
-  </div><br>`;
+      //     document.getElementById("tuoiFavoriti").innerHTML += `
+      //   <div class="p-2 favoriti rounded">
+      //     <div class="rounded overflow-hidden" style="position:relative">
+      //       <img src="${risp.cover_big}" alt="img" width="100%" class="suggImg" onclick='window.location.assign("${url}")'/>
+      //       <div class="listHeart"><i class="bi bi-heart-fill"></i></div>
+      //     </div>
+      //     <h6 class="mt-4 suggTitle">${risp.title}</h6>
+      //     <p class="suggDescription pb-2">${risp.artist.name}</p>
+      // </div><br>`;
     }
   }
   for (let i = 0; i < 6; i++) {
@@ -117,15 +117,15 @@ const showMore = async () => {
       </div>
     </div>`;
 
-      document.getElementById("tuoiFavoriti").innerHTML += `
-    <div class="p-2 favoriti rounded">
-      <div class="rounded overflow-hidden" style="position:relative">
-        <img src="${risp.cover_big}" alt="img" width="100%" class="suggImg" onclick='window.location.assign("${url}")'/>
-        <div class="listHeart"><i class="bi bi-heart-fill"></i></div>
-      </div>
-      <h6 class="mt-4 suggTitle">${risp.title}</h6>
-      <p class="suggDescription pb-2">${risp.artist.name}</p>
-  </div><br>`;
+      //     document.getElementById("tuoiFavoriti").innerHTML += `
+      //   <div class="p-2 favoriti rounded">
+      //     <div class="rounded overflow-hidden" style="position:relative">
+      //       <img src="${risp.cover_big}" alt="img" width="100%" class="suggImg" onclick='window.location.assign("${url}")'/>
+      //       <div class="listHeart"><i class="bi bi-heart-fill"></i></div>
+      //     </div>
+      //     <h6 class="mt-4 suggTitle">${risp.title}</h6>
+      //     <p class="suggDescription pb-2">${risp.artist.name}</p>
+      // </div><br>`;
     }
   }
 };

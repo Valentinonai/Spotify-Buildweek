@@ -414,3 +414,9 @@ span {
   background-color: white;
   border-radius: 50%;
 }
+
+@media screen and (max-width: 800px) {
+  #volume {
+    width: 100px;
+  }
+}

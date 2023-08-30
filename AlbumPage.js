@@ -91,6 +91,7 @@ window.addEventListener("DOMContentLoaded", () => {
             bottone.audio_di_riferimento = evento_load.target;
             titoloCanzone.addEventListener("click", (event) => {
               if (audioPlaying !== null) {
+                audio.volume = document.getElementById("volume").value;
                 console.dir(audioPlaying);
                 audioPlaying.pause();
                 audioPlaying.bottone_di_riferimento.audio_di_riferimento.currentTime = 0;
