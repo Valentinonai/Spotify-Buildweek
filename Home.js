@@ -97,8 +97,8 @@ const creaSong = async () => {
         document.querySelector("#pausePlayer").style = "display:block";
         event.target.audio_di_riferimento.play();
         playButton();
-        // document.querySelector("#playPlayer").addEventListener("click", play);
-        // document.querySelector("#pausePlayer").addEventListener("click", play);
+        document.querySelector("#playPlayer").addEventListener("click", play);
+        document.querySelector("#pausePlayer").addEventListener("click", play);
         Song.addEventListener("play", () => tempoReale(Song));
       });
     });
