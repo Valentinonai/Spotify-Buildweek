@@ -420,3 +420,8 @@ span {
     width: 100px;
   }
 }
+
+#prevTrack,
+#nextTrack {
+  cursor: pointer;
+}

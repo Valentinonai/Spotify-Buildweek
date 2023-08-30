@@ -1,5 +1,7 @@
 let audioPlaying = null;
 let interval = 0;
+const arrayCanzoni = [];
+let canzone = null;
 window.addEventListener("DOMContentLoaded", () => {
   const id = new URLSearchParams(window.location.search).get("albumId");
   fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${id}`, {
@@ -85,6 +87,8 @@ window.addEventListener("DOMContentLoaded", () => {
           const audio = new Audio(element.preview);
           audio.bottone_di_riferimento = titoloCanzone;
           audio.volume = 0.3;
+          arrayCanzoni.push(audio);
+          // console.dir(audio);
           audio.addEventListener("canplaythrough", (evento_load) => {
             const bottone = evento_load.target.bottone_di_riferimento;
             bottone.disabled = false;
@@ -98,7 +102,8 @@ window.addEventListener("DOMContentLoaded", () => {
                 document.documentElement.style.setProperty("--scroll", `${0}%`);
                 clearInterval(interval);
               }
-              document.getElementById("pBrano").innerText = element.title;
+              document.getElementById("pBrano").innerText = element.title_short;
+              canzone = element.title_short;
               console.log(element.title);
               document.querySelector("#btnPlay").classList.add("pause");
               document.querySelector("#btnPlay i:first-of-type").style = "display:none";
@@ -121,6 +126,8 @@ window.addEventListener("DOMContentLoaded", () => {
         document.getElementById("titoloCanzone").appendChild(titoloCanzone);
         document.getElementById("numeroRiproduzioni").appendChild(numeroRiproduzioni);
         document.getElementById("durata").appendChild(durata);
+        document.getElementById("prevTrack").addEventListener("click", prevSong);
+        document.getElementById("nextTrack").addEventListener("click", nextSong);
       });
     })
     .catch((err) => console.log(err));
@@ -208,4 +215,58 @@ const tempoReale = (element) => {
 const volume = (event) => {
   const vol = parseFloat(event.target.value).toFixed(3);
   audioPlaying.volume = vol;
+};
+
+const prevSong = () => {
+  for (let i = 0; i < arrayCanzoni.length; i++) {
+    if (arrayCanzoni[i].bottone_di_riferimento.innerText === canzone && i > 0) {
+      arrayCanzoni[i - 1].volume = document.getElementById("volume").value;
+
+      audioPlaying.pause();
+      audioPlaying.bottone_di_riferimento.audio_di_riferimento.currentTime = 0;
+      document.documentElement.style.setProperty("--scroll", `${0}%`);
+      clearInterval(interval);
+      audioPlaying = arrayCanzoni[i - 1];
+      document.getElementById("pBrano").innerText = audioPlaying.bottone_di_riferimento.innerText;
+      canzone = audioPlaying.bottone_di_riferimento.innerText;
+      document.querySelector("#btnPlay").classList.add("pause");
+      document.querySelector("#btnPlay i:first-of-type").style = "display:none";
+      document.querySelector("#btnPlay i:last-of-type").style = "display:block";
+      document.querySelector("#playPlayer").style = "display:none";
+      document.querySelector("#pausePlayer").style = "display:block";
+      audioPlaying.bottone_di_riferimento.audio_di_riferimento.play();
+      document.querySelector("#btnPlay").addEventListener("click", playButton);
+      document.querySelector("#playPlayer").addEventListener("click", play);
+      document.querySelector("#pausePlayer").addEventListener("click", play);
+      audioPlaying.addEventListener("play", () => tempoReale(audioPlaying));
+    }
+  }
+};
+
+const nextSong = () => {
+  let appoggio = null;
+  for (let i = 0; i < arrayCanzoni.length; i++) {
+    if (arrayCanzoni[i].bottone_di_riferimento.innerText === canzone && i < arrayCanzoni.length) {
+      arrayCanzoni[i + 1].volume = document.getElementById("volume").value;
+      audioPlaying.pause();
+      audioPlaying.bottone_di_riferimento.audio_di_riferimento.currentTime = 0;
+      document.documentElement.style.setProperty("--scroll", `${0}%`);
+      clearInterval(interval);
+      audioPlaying = arrayCanzoni[i + 1];
+      console.dir(audioPlaying);
+      document.getElementById("pBrano").innerText = audioPlaying.bottone_di_riferimento.innerText;
+      appoggio = audioPlaying.bottone_di_riferimento.innerText;
+      document.querySelector("#btnPlay").classList.add("pause");
+      document.querySelector("#btnPlay i:first-of-type").style = "display:none";
+      document.querySelector("#btnPlay i:last-of-type").style = "display:block";
+      document.querySelector("#playPlayer").style = "display:none";
+      document.querySelector("#pausePlayer").style = "display:block";
+      audioPlaying.bottone_di_riferimento.audio_di_riferimento.play();
+      document.querySelector("#btnPlay").addEventListener("click", playButton);
+      document.querySelector("#playPlayer").addEventListener("click", play);
+      document.querySelector("#pausePlayer").addEventListener("click", play);
+      audioPlaying.addEventListener("play", () => tempoReale(audioPlaying));
+    }
+  }
+  canzone = appoggio;
 };
