@@ -281,17 +281,17 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form onsubmit="generaPreferiti()">
+            <form onsubmit="generaPreferiti(event)">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Nome Playlist</label>
                 <input type="text" id="inputPreferiti" required />
-                <!-- <input type="text" class="form-control" id="recipient-name" /> -->
+              </div>
+
+              <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="playListSave">Salva</button>
               </div>
             </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-            <button type="submit" class="btn btn-primary" id="playListSave">Salva</button>
           </div>
         </div>
       </div>

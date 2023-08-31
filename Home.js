@@ -1,7 +1,14 @@
 const numAlbumSugg = 5;
 let Song = null;
 let interval = null;
+const arrayPlayList = JSON.parse(localStorage.getItem("playList")) ? JSON.parse(localStorage.getItem("playList")) : [];
 window.addEventListener("DOMContentLoaded", () => {
+  if (arrayPlayList) {
+    arrayPlayList.forEach((elem) => {
+      const tuoiPreferiti = document.getElementById("tuoiPreferiti");
+      tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0">${elem}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash"></i></div></div>`;
+    });
+  }
   creaSong();
   fetch(" https://striveschool-api.herokuapp.com/api/deezer/search?q=album")
     .then((risp) => risp.json())
@@ -216,4 +223,23 @@ const playbar = () => {
     play.style = "display:none";
     pause.style = "display:block";
   }
+};
+
+const generaPreferiti = (event) => {
+  event.preventDefault();
+  const nomePlaylist = document.querySelector("form input").value;
+  console.log(nomePlaylist);
+  const tuoiPreferiti = document.getElementById("tuoiPreferiti");
+  tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0">${nomePlaylist}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash"></i></div></div>`;
+  arrayPlayList.push(nomePlaylist);
+  localStorage.setItem("playList", JSON.stringify(arrayPlayList));
+  document.querySelector("form input").value = "";
+};
+
+const eliminaPlayList = (event) => {
+  event.currentTarget.parentElement.remove();
+  const index = arrayPlayList.indexOf(event.currentTarget.parentElement.children[0].innerText);
+  console.log(index);
+  arrayPlayList.splice(index, 1);
+  localStorage.setItem("playList", JSON.stringify(arrayPlayList));
 };

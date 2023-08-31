@@ -2,7 +2,14 @@ let audioPlaying = null;
 let interval = 0;
 const arrayCanzoni = [];
 let canzone = null;
+const arrayPlayList = JSON.parse(localStorage.getItem("playList")) ? JSON.parse(localStorage.getItem("playList")) : [];
 window.addEventListener("DOMContentLoaded", () => {
+  if (arrayPlayList) {
+    arrayPlayList.forEach((elem) => {
+      const tuoiPreferiti = document.getElementById("tuoiPreferiti");
+      tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0">${elem}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash"></i></div></div>`;
+    });
+  }
   const id = new URLSearchParams(window.location.search).get("albumId");
   fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${id}`, {
     method: "GET",
@@ -275,4 +282,22 @@ const nextSong = () => {
     }
   }
   canzone = appoggio;
+};
+const generaPreferiti = (event) => {
+  event.preventDefault();
+  const nomePlaylist = document.querySelector("form input").value;
+  console.log(nomePlaylist);
+  const tuoiPreferiti = document.getElementById("tuoiPreferiti");
+  tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0">${nomePlaylist}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash"></i></div></div>`;
+  arrayPlayList.push(nomePlaylist);
+  localStorage.setItem("playList", JSON.stringify(arrayPlayList));
+  document.querySelector("form input").value = "";
+};
+
+const eliminaPlayList = (event) => {
+  event.currentTarget.parentElement.remove();
+  const index = arrayPlayList.indexOf(event.currentTarget.parentElement.children[0].innerText);
+  console.log(index);
+  arrayPlayList.splice(index, 1);
+  localStorage.setItem("playList", JSON.stringify(arrayPlayList));
 };
