@@ -137,7 +137,7 @@
               <div class="col-1">
                 <div><span>#</span></div>
               </div>
-              <div class="col-7">
+              <div class="col-6">
                 <div><span>Titolo</span></div>
               </div>
               <div class="col-2">
@@ -148,13 +148,15 @@
                   <span><i class="bi bi-clock"></i></span>
                 </div>
               </div>
+              <div class="col-1"><span>Add</span></div>
               <hr />
             </div>
             <div class="row pb-3" id="tabella">
               <div class="col-1" id="numeroCanzone"></div>
-              <div class="col-7" id="titoloCanzone"></div>
+              <div class="col-6" id="titoloCanzone"></div>
               <div class="col-2" id="numeroRiproduzioni"></div>
               <div class="col-2" id="durata"></div>
+              <div class="col-1" id="addToPlayList"></div>
             </div>
           </div>
         </div>
@@ -273,6 +275,48 @@
                 <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="playListSave">Salva</button>
               </div>
             </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modale -->
+
+    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" style="background-color: gray">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="formShowList" onsubmit="add(event)">
+              <div class="mb-3">
+                <label for="listaPlayList" class="col-form-label">PlayList</label>
+                <select name="Playlist" id="listaPlayList" required></select>
+              </div>
+              <div class="modal-footer border-black">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Aggiungi</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modale elenco -->
+    <div class="modal fade" id="ModalList" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" style="background-color: gray">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="ModalLabelList"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="modalBody">
+            <ul class="list-group" id="listGroup" style="background-color: transparent"></ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

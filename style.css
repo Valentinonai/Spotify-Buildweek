@@ -198,7 +198,7 @@ hr {
   opacity: 0.3;
   cursor: pointer;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 600px) {
   #suggerimenti {
     display: none;
   }
@@ -456,4 +456,17 @@ button a {
   .rightIcon {
     font-size: 10px;
   }
+}
+
+#addPlayList {
+  font-size: 20px;
+}
+#listaPlayList {
+  background-color: transparent;
+  display: block;
+  border: 1px solid black;
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
 }

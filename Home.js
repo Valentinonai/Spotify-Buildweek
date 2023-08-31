@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
   if (arrayPlayList) {
     arrayPlayList.forEach((elem) => {
       const tuoiPreferiti = document.getElementById("tuoiPreferiti");
-      tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0">${elem}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash"></i></div></div>`;
+      tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0" onclick="showList(event)" data-bs-toggle="modal" data-bs-target="#ModalList">${elem}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash"></i></div></div>`;
     });
   }
   creaSong();
@@ -229,11 +229,16 @@ const generaPreferiti = (event) => {
   event.preventDefault();
   const nomePlaylist = document.querySelector("form input").value;
   console.log(nomePlaylist);
-  const tuoiPreferiti = document.getElementById("tuoiPreferiti");
-  tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0">${nomePlaylist}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash"></i></div></div>`;
-  arrayPlayList.push(nomePlaylist);
-  localStorage.setItem("playList", JSON.stringify(arrayPlayList));
-  document.querySelector("form input").value = "";
+
+  if (nomePlaylist !== "playlist") {
+    const tuoiPreferiti = document.getElementById("tuoiPreferiti");
+    tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0" onclick="showList(event)" data-bs-toggle="modal" data-bs-target="#ModalList">${nomePlaylist}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash"></i></div></div>`;
+    arrayPlayList.push(nomePlaylist);
+    localStorage.setItem("playList", JSON.stringify(arrayPlayList));
+    document.querySelector("form input").value = "";
+  } else {
+    alert("nome non valido");
+  }
 };
 
 const eliminaPlayList = (event) => {
@@ -241,5 +246,44 @@ const eliminaPlayList = (event) => {
   const index = arrayPlayList.indexOf(event.currentTarget.parentElement.children[0].innerText);
   console.log(index);
   arrayPlayList.splice(index, 1);
+  localStorage.removeItem(event.currentTarget.parentElement.children[0].innerText);
   localStorage.setItem("playList", JSON.stringify(arrayPlayList));
+};
+const showTime = (time) => {
+  let minuti = parseInt(time / 60);
+  let ore = parseInt(minuti / 60);
+  let secondi = time % 60;
+  minuti = minuti - ore * 60;
+  let tempo = 0;
+  if (minuti < 10) minuti = "0" + minuti.toString();
+  if (secondi < 10) secondi = "0" + secondi.toString();
+  if (ore < 10) ore = "0" + ore.toString();
+  if (ore > 0) {
+    tempo = `${ore}:${minuti}:${secondi}`;
+  } else if (minuti > 0) {
+    tempo = `${minuti}:${secondi}`;
+  } else {
+    tempo = `0:${secondi}`;
+  }
+  return tempo;
+};
+const showList = async (event) => {
+  const array = JSON.parse(localStorage.getItem(event.target.innerText));
+  document.getElementById("ModalLabelList").innerText = event.target.innerText;
+  const list = document.getElementById("listGroup");
+  list.innerHTML = "";
+  for (let i = 0; i < array.length; i++) {
+    const risposta = await (
+      await fetch(`https://deezerdevs-deezer.p.rapidapi.com/track/${array[i]}`, {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key": "be9aa8f80cmshcb87ef0073d5d4ep15813fjsn4ee3c6fb8586",
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
+      })
+    ).json();
+    list.innerHTML += `<li class="list-group-item" style="background-color: transparent">${
+      risposta.title_short
+    }  ${showTime(risposta.duration)}</li>`;
+  }
 };

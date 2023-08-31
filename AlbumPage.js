@@ -3,11 +3,12 @@ let interval = 0;
 const arrayCanzoni = [];
 let canzone = null;
 const arrayPlayList = JSON.parse(localStorage.getItem("playList")) ? JSON.parse(localStorage.getItem("playList")) : [];
+let idToAdd = 0;
 window.addEventListener("DOMContentLoaded", () => {
   if (arrayPlayList) {
     arrayPlayList.forEach((elem) => {
       const tuoiPreferiti = document.getElementById("tuoiPreferiti");
-      tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0">${elem}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash"></i></div></div>`;
+      tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0" onclick="showList(event)" data-bs-toggle="modal" data-bs-target="#ModalList">${elem}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash" ></i></div></div>`;
     });
   }
   const id = new URLSearchParams(window.location.search).get("albumId");
@@ -89,8 +90,17 @@ window.addEventListener("DOMContentLoaded", () => {
       album.tracks.data.forEach((element) => {
         const numeroCanzone = document.createElement("div");
         const titoloCanzone = document.createElement("div");
+        const addToPlaylist = document.getElementById("addToPlayList");
         const numeroRiproduzioni = document.createElement("div");
         const durata = document.createElement("div");
+        const x = document.createElement("div");
+        x.innerHTML = `<i class="bi bi-plus"></i>`;
+        x.addEventListener("click", () => addToPlayList(element.id));
+        x.className = "add";
+        x.setAttribute("data-bs-toggle", "modal");
+        x.setAttribute("data-bs-target", "#Modal");
+        x.setAttribute("data-bs-whatever", "@mdo");
+        x.style = "cursor:pointer";
         numeroCanzone.innerText = cont + 1;
         titoloCanzone.innerText = element.title_short;
         titoloCanzone.style = "cursor:pointer";
@@ -136,6 +146,7 @@ window.addEventListener("DOMContentLoaded", () => {
         durata.innerText = showTime(element.duration);
         cont++;
         document.getElementById("numeroCanzone").appendChild(numeroCanzone);
+        document.getElementById("addToPlayList").appendChild(x);
         document.getElementById("titoloCanzone").appendChild(titoloCanzone);
         document.getElementById("numeroRiproduzioni").appendChild(numeroRiproduzioni);
         document.getElementById("durata").appendChild(durata);
@@ -287,11 +298,15 @@ const generaPreferiti = (event) => {
   event.preventDefault();
   const nomePlaylist = document.querySelector("form input").value;
   console.log(nomePlaylist);
-  const tuoiPreferiti = document.getElementById("tuoiPreferiti");
-  tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0">${nomePlaylist}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash"></i></div></div>`;
-  arrayPlayList.push(nomePlaylist);
-  localStorage.setItem("playList", JSON.stringify(arrayPlayList));
-  document.querySelector("form input").value = "";
+  if (nomePlaylist !== "playlist") {
+    const tuoiPreferiti = document.getElementById("tuoiPreferiti");
+    tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0" onclick="showList(event)" data-bs-toggle="modal" data-bs-target="#ModalList">${nomePlaylist}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash" ></i></div></div>`;
+    arrayPlayList.push(nomePlaylist);
+    localStorage.setItem("playList", JSON.stringify(arrayPlayList));
+    document.querySelector("form input").value = "";
+  } else {
+    alert("nome non valido");
+  }
 };
 
 const eliminaPlayList = (event) => {
@@ -299,5 +314,47 @@ const eliminaPlayList = (event) => {
   const index = arrayPlayList.indexOf(event.currentTarget.parentElement.children[0].innerText);
   console.log(index);
   arrayPlayList.splice(index, 1);
+  localStorage.removeItem(event.currentTarget.parentElement.children[0].innerText);
   localStorage.setItem("playList", JSON.stringify(arrayPlayList));
+};
+
+const addToPlayList = (id) => {
+  const select = document.getElementById("listaPlayList");
+  select.innerHTML = "";
+  arrayPlayList.forEach((elem) => {
+    select.innerHTML += `<option>${elem}</option>`;
+  });
+  idToAdd = id;
+};
+
+const add = (event, id) => {
+  event.preventDefault();
+  console.dir(event);
+  const value = event.target[0].value;
+  console.log(id, value);
+  const app = JSON.parse(localStorage.getItem(value)) ? JSON.parse(localStorage.getItem(value)) : [];
+  app.push(idToAdd);
+  console.log("ciao");
+  localStorage.setItem(value, JSON.stringify(app));
+};
+
+const showList = async (event) => {
+  const array = JSON.parse(localStorage.getItem(event.target.innerText));
+  document.getElementById("ModalLabelList").innerText = event.target.innerText;
+  const list = document.getElementById("listGroup");
+  list.innerHTML = "";
+  for (let i = 0; i < array.length; i++) {
+    const risp = await (
+      await fetch(`https://deezerdevs-deezer.p.rapidapi.com/track/${array[i]}`, {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key": "be9aa8f80cmshcb87ef0073d5d4ep15813fjsn4ee3c6fb8586",
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
+      })
+    ).json();
+    list.innerHTML += `<li class="list-group-item" style="background-color: transparent">${
+      risp.title_short
+    }  ${showTime(risp.duration)}</li>`;
+  }
 };
