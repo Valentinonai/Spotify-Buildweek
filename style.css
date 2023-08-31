@@ -372,30 +372,22 @@ hr {
   margin-left: 41px;
 }
 
-h5 {
+#h5 {
   font-size: 9px;
 }
 
-h5 img {
+#h5 img {
   border-radius: 30px;
   margin-left: 10px;
-}
-
-p {
-  margin-left: 11px;
-}
-
-.pippo1 {
-  margin-left: 15px;
 }
 
 span {
   margin-left: 8px;
 }
-.zio {
-  margin-top: -29px;
+#paragrafo {
+  margin: 0;
+  margin-top: 5px;
 }
-
 /* Volume */
 #volume {
   appearance: none;

@@ -235,30 +235,25 @@ div.container-fluid div.row div.col-lg-8 div.row div.col-5 div.d-flex p {
   margin-left: 41px;
 }
 
-h5 {
-  font-size: 18px;
+#h5 {
+  font-size: 9px;
 }
 
-h5 img {
+#h5 img {
   border-radius: 30px;
   margin-left: 10px;
-}
-
-p {
-  padding-left: 11px;
-}
-
-.pippo1 {
-  margin-left: 15px;
-  font-size: 14px;
 }
 
 span {
   margin-left: 8px;
 }
+#paragrafo {
+  margin: 0;
+  margin-top: 5px;
+}
 
-.zio {
-  margin-top: -29px;
+span {
+  margin-left: 8px;
 }
 
 .icon-wrapper {
@@ -304,4 +299,12 @@ span {
 
 #divDuration {
   width: 15%;
-}/*# sourceMappingURL=ArtistPage.css.map */
+} /*# sourceMappingURL=ArtistPage.css.map */
+
+#followingBtn {
+  padding-left: 2px;
+  padding-bottom: 1px;
+  font-size: 20px;
+  height: 30px;
+  width: 30px;
+}

@@ -25,9 +25,16 @@ window.onload = async () => {
   console.log(artistaSelezionato);
   const divArtistaVerificato = document.getElementById("artistaVerificato");
   console.log(divArtistaVerificato);
-  divArtistaVerificato.innerHTML = ` <i class="bi bi-patch-check-fill"> <p>Artista Verificato</p></div>
-  <h1 id="nomeArtista">${name}</h1>
-  <p id="ascoltatoriMensili">${nb_fan} ascoltatori mensili</p>`;
+  divArtistaVerificato.innerHTML = `<div class="d-flex" >
+  <div class="align-self-center text-primary ps-2">
+  <i class="bi bi-patch-check-fill"> </i>
+</div>
+<p style="color:gray; padding-left:10px;">Artista Verificato</p>
+</div>
+<div>
+<h1 id="nomeArtista" style="color:gray">${name}</h1>
+<p id="ascoltatoriMensili" style="color:gray">${nb_fan} ascoltatori mensili</p>
+</div>`;
   const divHeader = document.getElementById("header");
   divHeader.style.backgroundImage = "url(" + picture_xl + ")";
 
@@ -128,3 +135,9 @@ const showTime = (time) => {
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const avanti = () => {
+  window.history.forward();
+};
+const indietro = () => {
+  window.history.back();
+};
