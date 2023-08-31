@@ -4,6 +4,10 @@ const arrayCanzoni = [];
 let canzone = null;
 const arrayPlayList = JSON.parse(localStorage.getItem("playList")) ? JSON.parse(localStorage.getItem("playList")) : [];
 let idToAdd = 0;
+const Canzone = {
+  id: null,
+  titolo: null,
+};
 window.addEventListener("DOMContentLoaded", () => {
   if (arrayPlayList) {
     arrayPlayList.forEach((elem) => {
@@ -95,7 +99,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const durata = document.createElement("div");
         const x = document.createElement("div");
         x.innerHTML = `<i class="bi bi-plus"></i>`;
-        x.addEventListener("click", () => addToPlayList(element.id));
+        x.addEventListener("click", () => addToPlayList(element.id, element.title_short));
         x.className = "add";
         x.setAttribute("data-bs-toggle", "modal");
         x.setAttribute("data-bs-target", "#Modal");
@@ -318,13 +322,14 @@ const eliminaPlayList = (event) => {
   event.currentTarget.parentElement.remove();
 };
 
-const addToPlayList = (id) => {
+const addToPlayList = (id, titolo) => {
   const select = document.getElementById("listaPlayList");
   select.innerHTML = "";
   arrayPlayList.forEach((elem) => {
     select.innerHTML += `<option>${elem}</option>`;
   });
-  idToAdd = id;
+  Canzone.id = id;
+  Canzone.titolo = titolo;
 };
 
 const add = (event, id) => {
@@ -333,8 +338,7 @@ const add = (event, id) => {
   const value = event.target[0].value;
   console.log(id, value);
   const app = JSON.parse(localStorage.getItem(value)) ? JSON.parse(localStorage.getItem(value)) : [];
-  app.push(idToAdd);
-  console.log("ciao");
+  app.push(Canzone);
   localStorage.setItem(value, JSON.stringify(app));
 };
 
@@ -345,7 +349,7 @@ const showList = async (event) => {
   list.innerHTML = "";
   for (let i = 0; i < array.length; i++) {
     const risp = await (
-      await fetch(`https://deezerdevs-deezer.p.rapidapi.com/track/${array[i]}`, {
+      await fetch(`https://deezerdevs-deezer.p.rapidapi.com/track/${array[i].id}`, {
         method: "GET",
         headers: {
           "X-RapidAPI-Key": "be9aa8f80cmshcb87ef0073d5d4ep15813fjsn4ee3c6fb8586",
@@ -353,8 +357,18 @@ const showList = async (event) => {
         },
       })
     ).json();
-    list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: transparent"><p>${
-      risp.title_short
-    } </p><p> ${showTime(risp.duration)}</></li>`;
+    list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: transparent"><p>${risp.title} </p><div onclick="eliminaCanzone(event)"><i class="bi bi-trash"></i></div></li>`;
   }
+};
+
+const eliminaCanzone = (event) => {
+  console.dir(event.currentTarget.parentElement.parentElement.parentElement.parentElement.children[0].innerText);
+  const index = event.currentTarget.parentElement.parentElement.parentElement.parentElement.children[0].innerText;
+  const elem = JSON.parse(localStorage.getItem(index));
+  console.log(elem, index, event.currentTarget.parentElement.children[0].innerText);
+  for (let i = 0; i < elem.length; i++) {
+    if (elem[i].titolo === event.currentTarget.parentElement.children[0].innerText) elem.splice(i, 1);
+  }
+  localStorage.setItem(index, JSON.stringify(elem));
+  event.currentTarget.parentElement.remove();
 };

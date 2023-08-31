@@ -2,6 +2,10 @@ const numAlbumSugg = 5;
 let Song = null;
 let interval = null;
 const arrayPlayList = JSON.parse(localStorage.getItem("playList")) ? JSON.parse(localStorage.getItem("playList")) : [];
+const Canzone = {
+  id: null,
+  titolo: null,
+};
 window.addEventListener("DOMContentLoaded", () => {
   if (arrayPlayList) {
     arrayPlayList.forEach((elem) => {
@@ -274,7 +278,7 @@ const showList = async (event) => {
   list.innerHTML = "";
   for (let i = 0; i < array.length; i++) {
     const risposta = await (
-      await fetch(`https://deezerdevs-deezer.p.rapidapi.com/track/${array[i]}`, {
+      await fetch(`https://deezerdevs-deezer.p.rapidapi.com/track/${array[i].id}`, {
         method: "GET",
         headers: {
           "X-RapidAPI-Key": "be9aa8f80cmshcb87ef0073d5d4ep15813fjsn4ee3c6fb8586",
@@ -282,8 +286,17 @@ const showList = async (event) => {
         },
       })
     ).json();
-    list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: transparent"><p>${
-      risposta.title_short
-    } </p><p> ${showTime(risposta.duration)}</></li>`;
+    list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: transparent"><p>${risposta.title} </p><div onclick="eliminaCanzone(event)"><i class="bi bi-trash"></i></div></li>`;
   }
+};
+const eliminaCanzone = (event) => {
+  console.dir(event.currentTarget.parentElement.parentElement.parentElement.parentElement.children[0].innerText);
+  const index = event.currentTarget.parentElement.parentElement.parentElement.parentElement.children[0].innerText;
+  const elem = JSON.parse(localStorage.getItem(index));
+  console.log(elem, index, event.currentTarget.parentElement.children[0].innerText);
+  for (let i = 0; i < elem.length; i++) {
+    if (elem[i].titolo === event.currentTarget.parentElement.children[0].innerText) elem.splice(i, 1);
+  }
+  localStorage.setItem(index, JSON.stringify(elem));
+  event.currentTarget.parentElement.remove();
 };
