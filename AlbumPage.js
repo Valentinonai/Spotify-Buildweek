@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", () => {
   if (arrayPlayList) {
     arrayPlayList.forEach((elem) => {
       const tuoiPreferiti = document.getElementById("tuoiPreferiti");
-      tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0" onclick="showList(event)" data-bs-toggle="modal" data-bs-target="#ModalList">${elem}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash" ></i></div></div>`;
+      tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p style="cursor:pointer" class="m-0" onclick="showList(event)" data-bs-toggle="modal" data-bs-target="#ModalList">${elem}</p><div onclick="eliminaPlayList(event)" style="cursor:pointer"><i class="bi bi-trash" ></i></div></div>`;
     });
   }
   const id = new URLSearchParams(window.location.search).get("albumId");
@@ -304,7 +304,7 @@ const generaPreferiti = (event) => {
   console.log(nomePlaylist);
   if (nomePlaylist !== "playlist") {
     const tuoiPreferiti = document.getElementById("tuoiPreferiti");
-    tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p class="m-0" onclick="showList(event)" data-bs-toggle="modal" data-bs-target="#ModalList">${nomePlaylist}</p><div onclick="eliminaPlayList(event)"><i class="bi bi-trash" ></i></div></div>`;
+    tuoiPreferiti.innerHTML += `<div class="d-flex justify-content-between align-items-center px-1 py-2"><p style="cursor:pointer" class="m-0" onclick="showList(event)" data-bs-toggle="modal" data-bs-target="#ModalList">${nomePlaylist}</p><div onclick="eliminaPlayList(event)" style="cursor:pointer"><i class="bi bi-trash" ></i></div></div>`;
     arrayPlayList.push(nomePlaylist);
     localStorage.setItem("playList", JSON.stringify(arrayPlayList));
     document.querySelector("form input").value = "";
