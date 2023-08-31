@@ -45,7 +45,7 @@ form button:hover {
   padding-block: 20px;
   position: sticky;
   top: 0px;
-  z-index: 2;
+  z-index: 5;
   background-color: black;
 }
 .sidebar,
