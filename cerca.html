@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="./cerca.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container-xxl">
       <div class="row">
         <div class="d-none d-md-block col-2">
           <div class="sidebar">
@@ -32,7 +32,6 @@
               <ion-icon name="home-outline"></ion-icon> Home
             </button>
             <button class="neon-button m-2"><ion-icon name="library-outline"></ion-icon> Libreria</button>
-            <button class="neon-button m-2"><ion-icon name="search-outline"></ion-icon> Cerca</button>
             <div class="wrap">
               <span class="d-flex"
                 ><ion-icon class="plus mt-2 p-2" name="add"></ion-icon
@@ -62,8 +61,8 @@
           </div>
         </div>
         <div class="col-12 col-md-8">
-          <form onsubmit="cerca()" class="mb-3">
-            <input type="text" required />
+          <form onsubmit="cerca(event)" class="mb-3">
+            <input type="text" id="ricerca" required />
             <button>Cerca</button>
           </form>
           <div class="row row-cols-2 row-cols-md-3 g-2" id="esempiRicerca"></div>

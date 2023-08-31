@@ -20,3 +20,8 @@ const creaCopertina = (num) => {
   col.appendChild(contenitore);
   esempiRicerca.appendChild(col);
 };
+
+const cerca = (event) => {
+  event.preventDefault();
+  window.location.assign(`./ArtistPage.html?artistName=${document.getElementById("ricerca").value}`);
+};
