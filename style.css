@@ -368,10 +368,6 @@ hr {
   margin-left: 2px;
 }
 
-.rightIcon {
-  margin-left: 41px;
-}
-
 #h5 {
   font-size: 9px;
 }
@@ -449,4 +445,15 @@ button a {
 #tuoiPreferiti {
   margin-top: 10px;
   border-top: 1px solid gray;
+}
+#attivita {
+  font-size: 15px;
+}
+@media screen and (max-width: 960px) {
+  #attivita {
+    font-size: 10px;
+  }
+  .rightIcon {
+    font-size: 10px;
+  }
 }

@@ -38,8 +38,17 @@ form button:hover {
   opacity: 0.8;
 }
 
-form {
-  margin-block: 20px;
+#barraNavigazione {
+  padding-block: 20px;
+  position: sticky;
+  top: 0px;
+  z-index: 2;
+  background-color: black;
+}
+.sidebar,
+#rightSidebar {
+  position: fixed;
+  top: 0;
 }
 
 @media screen and ((max-width: 991px) and (min-width:768px)) {

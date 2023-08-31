@@ -36,10 +36,7 @@ window.onload = async () => {
 <p id="ascoltatoriMensili" >${nb_fan} ascoltatori mensili</p>
 </div>`;
   const divHeader = document.getElementById("header");
-  divHeader.style.backgroundImage = "url(" + picture_xl + ")";
-
-  // const RespAlbumArtista = await fetch(url1 + id + "/top?limit=15");
-  // const albums = await RespAlbumArtista.json();
+  divHeader.style.backgroundImage = "linear-gradient(0deg, rgb(0 0 0 / 0%) 20%, #0000004a 80%),url(" + picture_xl + ")";
 
   album = artistaSelezionato.data;
   console.log(album);
