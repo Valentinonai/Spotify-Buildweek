@@ -282,8 +282,8 @@ const showList = async (event) => {
         },
       })
     ).json();
-    list.innerHTML += `<li class="list-group-item" style="background-color: transparent">${
+    list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: transparent"><p>${
       risposta.title_short
-    }  ${showTime(risposta.duration)}</li>`;
+    } </p><p> ${showTime(risposta.duration)}</></li>`;
   }
 };

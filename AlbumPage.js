@@ -310,12 +310,12 @@ const generaPreferiti = (event) => {
 };
 
 const eliminaPlayList = (event) => {
-  event.currentTarget.parentElement.remove();
   const index = arrayPlayList.indexOf(event.currentTarget.parentElement.children[0].innerText);
   console.log(index);
   arrayPlayList.splice(index, 1);
   localStorage.removeItem(event.currentTarget.parentElement.children[0].innerText);
   localStorage.setItem("playList", JSON.stringify(arrayPlayList));
+  event.currentTarget.parentElement.remove();
 };
 
 const addToPlayList = (id) => {
@@ -353,8 +353,8 @@ const showList = async (event) => {
         },
       })
     ).json();
-    list.innerHTML += `<li class="list-group-item" style="background-color: transparent">${
+    list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: transparent"><p>${
       risp.title_short
-    }  ${showTime(risp.duration)}</li>`;
+    } </p><p> ${showTime(risp.duration)}</></li>`;
   }
 };
