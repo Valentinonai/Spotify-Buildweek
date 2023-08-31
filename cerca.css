@@ -1,0 +1,62 @@
+.immagine {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  rotate: 45deg;
+  width: 150px;
+  height: 150px;
+}
+
+.contenitore {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+input {
+  width: 60%;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid gray;
+  border-radius: 20px;
+  outline: none;
+  color: gray;
+  padding-inline: 20px;
+}
+form button {
+  background-color: #65d46e;
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+form button:hover {
+  opacity: 0.8;
+}
+
+form {
+  margin-block: 20px;
+}
+
+@media screen and ((max-width: 991px) and (min-width:768px)) {
+  .immagine {
+    width: 100px;
+    height: 100px;
+  }
+  .contenitore {
+    height: 150px;
+  }
+}
+@media screen and ((max-width: 400px)) {
+  .immagine {
+    width: 100px;
+    height: 100px;
+  }
+  .contenitore {
+    height: 150px;
+  }
+}

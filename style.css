@@ -429,3 +429,32 @@ span {
 button a {
   color: white;
 }
+
+#playListSave {
+  background-color: #65d46e;
+  border: none;
+}
+
+#playListSave:hover {
+  opacity: 0.9;
+}
+#playListSave:active {
+  opacity: 0.5;
+}
+#playListContent {
+  background-color: gray;
+  color: white;
+}
+#playListContent input {
+  background-color: gray;
+  color: rgb(49, 48, 48);
+  outline: none;
+  border: none;
+  display: block;
+  border-bottom: 1px solid rgb(60, 59, 59);
+  width: 100%;
+}
+#tuoiPreferiti {
+  margin-top: 10px;
+  border-top: 1px solid gray;
+}
