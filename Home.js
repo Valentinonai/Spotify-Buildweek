@@ -252,6 +252,7 @@ const eliminaPlayList = (event) => {
   arrayPlayList.splice(index, 1);
   localStorage.removeItem(event.currentTarget.parentElement.children[0].innerText);
   localStorage.setItem("playList", JSON.stringify(arrayPlayList));
+  localStorage.removeItem(index);
 };
 const showTime = (time) => {
   let minuti = parseInt(time / 60);

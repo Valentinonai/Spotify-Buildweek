@@ -320,6 +320,7 @@ const eliminaPlayList = (event) => {
   localStorage.removeItem(event.currentTarget.parentElement.children[0].innerText);
   localStorage.setItem("playList", JSON.stringify(arrayPlayList));
   event.currentTarget.parentElement.remove();
+  localStorage.removeItem(index);
 };
 
 const addToPlayList = (id, titolo) => {
