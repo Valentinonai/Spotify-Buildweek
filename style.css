@@ -470,3 +470,10 @@ button a {
   outline: none;
   cursor: pointer;
 }
+.add {
+  opacity: 0.1;
+}
+
+.add:hover {
+  opacity: 1;
+}
