@@ -35,7 +35,7 @@ const creaCopertina = (num) => {
 
 const cerca = (event) => {
   event.preventDefault();
-  const x = document.getElementById("ricerca").value.replace(" ", "-");
+  const x = document.getElementById("ricerca").value.replaceAll(" ", "-");
   window.location.assign("./ArtistPage.html?artistName=" + x);
 };
 

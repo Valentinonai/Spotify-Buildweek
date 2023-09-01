@@ -32,7 +32,7 @@ window.addEventListener("DOMContentLoaded", () => {
       document.getElementById("albumDetail").innerText =
         album.artist.name + " " + album.release_date + " n°" + album.nb_tracks + " brani, " + showTime(album.duration);
       document.getElementById("albumDetail").addEventListener("click", () => {
-        const x = album.artist.name.replace(" ", "-");
+        const x = album.artist.name.replaceAll(" ", "-");
         window.location.assign("./ArtistPage.html?artistName=" + x);
       });
       document.getElementById("albumDetail").style = "cursor:pointer";
