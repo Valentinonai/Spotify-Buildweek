@@ -35,7 +35,8 @@ const creaCopertina = (num) => {
 
 const cerca = (event) => {
   event.preventDefault();
-  window.location.assign(`./ArtistPage.html?artistName=${document.getElementById("ricerca").value}`);
+  const x = document.getElementById("ricerca").value.replace(" ", "-");
+  window.location.assign("./ArtistPage.html?artistName=" + x);
 };
 
 const avanti = () => {
