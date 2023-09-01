@@ -98,6 +98,9 @@ window.addEventListener("DOMContentLoaded", () => {
         const numeroRiproduzioni = document.createElement("div");
         const durata = document.createElement("div");
         const x = document.createElement("div");
+        numeroCanzone.style = "padding-bottom:20px";
+        numeroRiproduzioni.style = "padding-bottom:20px";
+        durata.style = "padding-bottom:20px";
         x.innerHTML = `<i class="bi bi-plus"></i>`;
         x.addEventListener("click", () => addToPlayList(element.id, element.title));
         x.className = "add";
@@ -107,7 +110,8 @@ window.addEventListener("DOMContentLoaded", () => {
         x.style = "cursor:pointer";
         numeroCanzone.innerText = cont + 1;
         titoloCanzone.innerText = element.title;
-        titoloCanzone.style = "cursor:pointer";
+        titoloCanzone.style =
+          "cursor:pointer; padding-bottom:20px ; text-overflow: ellipsis;  white-space: nowrap; overflow: hidden; ";
         if (element.preview) {
           const audio = new Audio(element.preview);
           audio.bottone_di_riferimento = titoloCanzone;
@@ -331,7 +335,6 @@ const addToPlayList = (id, titolo) => {
   Canzone.id = id;
   Canzone.titolo = titolo;
 };
-
 const add = (event) => {
   event.preventDefault();
   console.dir(event);

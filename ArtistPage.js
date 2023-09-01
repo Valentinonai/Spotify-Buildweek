@@ -50,29 +50,29 @@ window.onload = async () => {
   else cont = album.length;
   for (let i = 0; i < cont; i++) {
     const divBranoSingolo = document.createElement("div");
-    divBranoSingolo.classList.add("d-flex");
-    divBranoSingolo.classList.add("justify-content-between");
     divBraniArtista.classList.add("flex-column");
     divBraniArtista.classList.add("flex-grow-1");
     divBraniArtista.classList.add("gap-3");
     console.log(album.length);
-    divBranoSingolo.innerHTML = ` <div class="d-flex w-100 "> <div id="divN"><p id="numeroBrano">${i + 1}</p></div>
-    <div id="divImage" ><img class="px-1" style="object-fit: cover; width: 40px; height: 40px; align-self:center" " id="imgBranoPopolare" src="${
+    divBranoSingolo.innerHTML = ` <div class="d-flex w-100 align-items-center"> <div id="divN"><p id="numeroBrano">${
+      i + 1
+    }</p></div>
+    <div id="divImage" ><img class="imgBranoPopolare" style="object-fit: cover; width: 100%; height: 100%; align-self:center imgBranoPopolare" src="${
       album[i].album.cover
     }" alt="" /></div>
            <div id="divTitle"><a href="./AlbumPage.html?albumId=${
              album[i].album.id
-           }" class="m-0 align-self-center"  id="titoloBranoPopolare">${album[i].title}</a> </div>
-    <div id="divNAscolti"><p  class="m-0 align-self-center w-25"  id="ascoltiBranoPopolare" class="infoBrano">${
+           }" class="m-0 align-self-center titoloBranoPopolare">${album[i].title}</a> </div>
+    <div id="divNAscolti"><p  class="m-0 align-self-center w-25 ascoltiBranoPopolare" class="infoBrano">${
       album[i].rank
     }</p></div>
-    <div id="divDuration"><p class="m-0 align-self-center w-25" id="durataBranoPopolare" class="infoBrano">${showTime(
+    <div id="divDuration"><p class="m-0 align-self-center w-25 durataBranoPopolare" class="infoBrano">${showTime(
       album[i].duration
     )}</p></div>`;
     divBraniArtista.appendChild(divBranoSingolo);
   }
   const divBraniLiked = document.getElementById("braniLiked");
-  divBraniLiked.innerHTML = `<div><img width="50px" src="${picture_small}" alt="" /></div>
+  divBraniLiked.innerHTML = `<div><img style="width: 50px; height: 50px; border-radius: 25px;" src="${picture_small}" alt="" /></div>
   <div>
     <h6 id="braniLiked">Hai messo Mi piace a 11 brani</h6>
     <p id="bandLiked">di ${name}</p>
@@ -96,17 +96,19 @@ const showMore = function () {
     divBraniArtistaAll.classList.add("flex-column");
     divBraniArtistaAll.classList.add("flex-grow-1");
     divBraniArtistaAll.classList.add("gap-3");
-    divBranoSingolo.innerHTML = ` <div class="d-flex w-100 "> <div id="divN" ><p id="numeroBrano">${i + 1}</p></div>
-    <div id="divImage" ><img class="px-1" style="object-fit: cover; width: 40px; height: 40px; align-self:center" " id="imgBranoPopolare" src="${
+    divBranoSingolo.innerHTML = ` <div class="d-flex w-100 align-items-baseline"> <div id="divN" ><p id="numeroBrano">${
+      i + 1
+    }</p></div>
+    <div id="divImage" ><img class="imgBranoPopolare" style="object-fit: cover; width: 100%; height: 100%; align-self:center" src="${
       album[i].album.cover
     }" alt="" /></div>
            <div id="divTitle"><a href="./AlbumPage.html?albumId=${
              album[i].album.id
-           }" class="m-0 align-self-center"  id="titoloBranoPopolare">${album[i].title}</a> </div>
-    <div id="divNAscolti"><p  class="m-0 align-self-center w-25"  id="ascoltiBranoPopolare" class="infoBrano">${
+           }" class="m-0 align-self-center titoloBranoPopolare">${album[i].title}</a> </div>
+    <div id="divNAscolti"><p  class="m-0 align-self-center w-25 ascoltiBranoPopolare infoBrano">${
       album[i].rank
     }</p></div>
-    <div id="divDuration"><p class="m-0 align-self-center w-25" id="durataBranoPopolare" class="infoBrano">${showTime(
+    <div id="divDuration"><p class="m-0 align-self-center w-25 durataBranoPopolare infoBrano">${showTime(
       album[i].duration
     )}</p></div>`;
     divBraniArtistaAll.appendChild(divBranoSingolo);

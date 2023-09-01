@@ -3,6 +3,7 @@
 }
 body {
   background-color: black;
+  font-family: "Circular";
 }
 #main {
   background-color: #212121;
@@ -131,7 +132,7 @@ body {
 }
 
 #header {
-  background-color: palegoldenrod;
+  background: linear-gradient(152deg, palegoldenrod, rgba(0, 0, 0, 0.98) 100%);
   height: 50vh;
   position: relative;
 }
@@ -198,7 +199,7 @@ hr {
   opacity: 0.3;
   cursor: pointer;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 575px) {
   #suggerimenti {
     display: none;
   }
@@ -324,16 +325,17 @@ hr {
 }
 .plus {
   background-color: #dacfcd;
-  color: #fff;
+  color: black;
   border-radius: 5px;
   padding: 5px;
 }
 
 .heart {
-  background-color: #375894;
   color: white;
   border-radius: 5px;
   padding: 5px;
+  background: rgb(55, 20, 169);
+  background: linear-gradient(152deg, rgba(55, 20, 169, 1) 0%, rgba(131, 157, 153, 0.98) 100%);
 }
 
 .favorite {
@@ -471,9 +473,95 @@ button a {
   cursor: pointer;
 }
 .add {
+  padding-bottom: 20px;
+}
+
+#nomeAlbum {
+  color: white;
+}
+#autore {
+  font-weight: 700;
+  color: white;
+}
+#titoloAlbum {
+  font-weight: 700;
+  font-size: 60px;
+  color: white;
+}
+.add {
   opacity: 0.1;
 }
 
 .add:hover {
   opacity: 1;
+}
+@media screen and (max-width: 1025px) {
+  #titoloAlbum {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 650px) {
+  #titoloAlbum {
+    font-size: 20px;
+  }
+  .infoBrani {
+    display: none;
+  }
+  #numeroCanzone {
+    display: none;
+  }
+  #tabella {
+    height: 100%;
+  }
+  .imgAlbum {
+    display: block;
+  }
+  .divImgAlbum {
+    width: 40%;
+    margin-inline: auto;
+  }
+  #albumDettaglio {
+    top: 55vh;
+  }
+  .cl-album {
+    width: 100%;
+  }
+  #header {
+    height: 55vh;
+  }
+  #albumDettaglio {
+    height: inherit;
+  }
+  #nomeAlbum {
+    font-size: 15px;
+  }
+  #albumDetail {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .divImgAlbum {
+    width: 45%;
+    margin-inline: auto;
+  }
+}
+@media screen and (max-width: 400px) {
+  #durata,
+  #numeroRiproduzioni {
+    display: none;
+  }
+  #titoloCanzone {
+    width: 85%;
+    font-size: 20px;
+  }
+  #titoloAlbum {
+    font-size: 25px;
+  }
+}
+
+#pBrano,
+#pArtistaBrano {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
