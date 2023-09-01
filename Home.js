@@ -287,7 +287,7 @@ const showList = async (event) => {
         },
       })
     ).json();
-    list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: transparent"><p>${risposta.title} </p><div onclick="eliminaCanzone(event)"><i class="bi bi-trash"></i></div></li>`;
+    list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: transparent"><p>${risposta.title} </p><div onclick="eliminaCanzone(event)" style="cursor:pointer"><i class="bi bi-trash"></i></div></li>`;
   }
 };
 const eliminaCanzone = (event) => {

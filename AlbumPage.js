@@ -99,14 +99,14 @@ window.addEventListener("DOMContentLoaded", () => {
         const durata = document.createElement("div");
         const x = document.createElement("div");
         x.innerHTML = `<i class="bi bi-plus"></i>`;
-        x.addEventListener("click", () => addToPlayList(element.id, element.title_short));
+        x.addEventListener("click", () => addToPlayList(element.id, element.title));
         x.className = "add";
         x.setAttribute("data-bs-toggle", "modal");
         x.setAttribute("data-bs-target", "#Modal");
         x.setAttribute("data-bs-whatever", "@mdo");
         x.style = "cursor:pointer";
         numeroCanzone.innerText = cont + 1;
-        titoloCanzone.innerText = element.title_short;
+        titoloCanzone.innerText = element.title;
         titoloCanzone.style = "cursor:pointer";
         if (element.preview) {
           const audio = new Audio(element.preview);
@@ -126,9 +126,8 @@ window.addEventListener("DOMContentLoaded", () => {
                 document.documentElement.style.setProperty("--scroll", `${0}%`);
                 clearInterval(interval);
               }
-              document.getElementById("pBrano").innerText = element.title_short;
-              canzone = element.title_short;
-              console.log(element.title);
+              document.getElementById("pBrano").innerText = element.title;
+              canzone = element.title;
               document.querySelector("#btnPlay").classList.add("pause");
               document.querySelector("#btnPlay i:first-of-type").style = "display:none";
               document.querySelector("#btnPlay i:last-of-type").style = "display:block";
@@ -333,11 +332,10 @@ const addToPlayList = (id, titolo) => {
   Canzone.titolo = titolo;
 };
 
-const add = (event, id) => {
+const add = (event) => {
   event.preventDefault();
   console.dir(event);
   const value = event.target[0].value;
-  console.log(id, value);
   const app = JSON.parse(localStorage.getItem(value)) ? JSON.parse(localStorage.getItem(value)) : [];
   app.push(Canzone);
   localStorage.setItem(value, JSON.stringify(app));
@@ -358,18 +356,19 @@ const showList = async (event) => {
         },
       })
     ).json();
-    list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: transparent"><p>${risp.title} </p><div onclick="eliminaCanzone(event)"><i class="bi bi-trash"></i></div></li>`;
+    list.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center" style="background-color: transparent"><p>${risp.title} </p><div onclick="eliminaCanzone(event)" style="cursor:pointer"><i class="bi bi-trash"></i></div></li>`;
   }
 };
 
 const eliminaCanzone = (event) => {
-  console.dir(event.currentTarget.parentElement.parentElement.parentElement.parentElement.children[0].innerText);
+  // console.dir(event.currentTarget.parentElement.parentElement.parentElement.parentElement.children[0].innerText);
   const index = event.currentTarget.parentElement.parentElement.parentElement.parentElement.children[0].innerText;
   const elem = JSON.parse(localStorage.getItem(index));
   console.log(elem, index, event.currentTarget.parentElement.children[0].innerText);
   for (let i = 0; i < elem.length; i++) {
     if (elem[i].titolo === event.currentTarget.parentElement.children[0].innerText) elem.splice(i, 1);
   }
+  console.log(elem);
   localStorage.setItem(index, JSON.stringify(elem));
   event.currentTarget.parentElement.remove();
 };
